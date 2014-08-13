@@ -16,15 +16,15 @@ public class Rational extends BasicGame {
 	public static int getWidth() { return 800; }
 	public static int getHeight() { return 600; }
 	
-	TextBox tBox = new TextBox(Rational.getWidth()/2 - 500/2, 225, 500, 100,
-			"What? Where am I? Why is everything black?", Color.white);
-	
 	public Rational(String title) {
 		super(title);
 	}
 
 	private TrueTypeFont gameFont;
 	private int playerX=250, playerMove=0;
+	
+	TextBox tBox = new TextBox(Rational.getWidth()/2 - 500/2, 225, 500, 100,
+			"What? Where am I? Why is everything black?", Color.white);
 	
 	public void init(GameContainer container) throws SlickException {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
@@ -41,6 +41,8 @@ public class Rational extends BasicGame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
 	
 	public void update(GameContainer container, int delta) throws SlickException {
@@ -48,7 +50,6 @@ public class Rational extends BasicGame {
 	}
 	
 	public void render(GameContainer container, Graphics g) throws SlickException {
-		Box.MakeBox(g, "What? Where am I? Why is everything black?", gameFont);
 		tBox.draw(g, gameFont);
 		g.setColor(Color.green);
 		g.fillRect(playerX, 500, 50, 50);
