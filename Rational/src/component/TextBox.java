@@ -1,20 +1,40 @@
 package component;
 
-public abstract class TextBox implements ITextBox {
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.TrueTypeFont;
 
-	public double x, y, width, height;
+public class TextBox implements ITextBox {
+
+	public float red, green, blue, x, y, width, height;
+	public Color color;
 	public String text;
-	public TextBox(double x, double y, double width, double height, String text) {
+	
+	public TextBox(float x, float y, float width, float height, String text, Color color) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 		this.text = text;
+		this.color = color;
+	}
+	
+	public TextBox(float x, float y, float width, float height, String text, float red, float green, float blue) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.text = text;
+		this.color = new Color(red, green, blue);
 	}
 
 	@Override
-	public void draw() {
-
+	public void draw(Graphics g, TrueTypeFont f) {
+		g.setColor(Color.white);
+		g.drawRect(x, (float)y, (float)width, (float)height);
+		float textX = x +((width - f.getWidth(text)/ 2));
+		float textY = y +((height - f.getHeight(text)/ 2));
+		f.drawString(textX, textY, text);
 	}
 
 	@Override
@@ -23,34 +43,44 @@ public abstract class TextBox implements ITextBox {
 	}
 
 	@Override
-	public void setLocation(double x, double y) {
+	public void setLocation(float x, float y) {
 		setX(x);
 		setY(y);
 	}
 
 	@Override
-	public void setX(double x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
 	@Override
-	public void setY(double y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 
 	@Override
-	public void setWidth(double width) {
+	public void setWidth(float width) {
 		this.width = width;
 	}
 
 	@Override
-	public void setHeight(double height) {
+	public void setHeight(float height) {
 		this.height = height;
 	}
 	
 	@Override
 	public void setText(String text){
 		this.text = text;
+	}
+	
+	@Override
+	public void setColor(Color color){
+		this.color = color;
+	}
+	
+	@Override
+	public void setColor(float red, float green, float blue){
+		this.color = new Color(red, green, blue);
 	}
 
 	@Override
