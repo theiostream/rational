@@ -15,7 +15,6 @@ import component.Coords.Rect;
 import font.Fonts;
 
 public class Rational extends BasicGame {
-	
 	private TrueTypeFont gameFont;
 	private int playerX = 250, playerMove = 0;
 	
