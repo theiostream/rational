@@ -14,20 +14,23 @@ import component.TextBox;
 import font.Fonts;
 
 public class Rational extends BasicGame {
-	public static int getWidth() { return 800; }
-	public static int getHeight() { return 600; }
 	
-	public Rational(String title) {
-		super(title);
-	}
-
 	private TrueTypeFont gameFont;
-	private int playerX=250, playerMove=0;
+	private int playerX = 250, playerMove = 0;
 	
 	TextBox tBox = new TextBox(Rational.getWidth()/2 - 500/2, 225, 500, 100,
 			"What? Where am I? Why is everything black?", Color.white);
 	
+	public Rational(String title) {
+		super(title);
+	}
+	
 	public void init(GameContainer container) throws SlickException {
+		initGL();
+		initFonts();
+	}
+	
+	public void initGL(){
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
 		GL11.glOrtho(0, getWidth(), getHeight(), 0, 1, -1);
@@ -36,7 +39,9 @@ public class Rational extends BasicGame {
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glEnable(GL11.GL_BLEND);
-		
+	}
+	
+	public void initFonts(){
 		try {
 			gameFont = Fonts.gameFont();
 		} catch (Exception e) {
@@ -67,5 +72,11 @@ public class Rational extends BasicGame {
 		playerMove = 0;
 	}
 	
-		
+	public static int getWidth() {
+		return 800; 
+	}
+	
+	public static int getHeight() {
+		return 600;
+	}
 }

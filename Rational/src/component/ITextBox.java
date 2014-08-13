@@ -21,5 +21,4 @@ public interface ITextBox {
 	public double getHeight();
 	public String getText();
 	public Color getColor();
-	
 }
