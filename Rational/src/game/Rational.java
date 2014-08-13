@@ -19,7 +19,7 @@ public class Rational extends BasicGame {
 	private TrueTypeFont gameFont;
 	private int playerX = 250, playerMove = 0;
 	
-	Rect boxFrame = new Rect(Rational.getWidth()/2 - 500/2, 225, 500, 100);
+	Rect boxFrame = new Rect(Rational.getWidth()/2 - 500/2, 25, 500, 100);
 	TextBox tBox = new TextBox(boxFrame, "What? Where am I? Why is everything black?", Color.white);
 	
 	public Rational(String title) {
@@ -61,6 +61,7 @@ public class Rational extends BasicGame {
 	}
 	
 	public void keyPressed(int key, char c) {
+		Level.keyPressed(key, c);
 		if (key == Keyboard.KEY_RIGHT) {
 			playerMove = 1;
 		}
@@ -70,6 +71,7 @@ public class Rational extends BasicGame {
 	}
 	
 	public void keyReleased(int key, char c) {
+		Level.keyReleased(key, c);
 		playerMove = 0;
 	}
 	
