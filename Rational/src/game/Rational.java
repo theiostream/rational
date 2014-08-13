@@ -10,6 +10,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 
 import component.TextBox;
+import component.Coords.Rect;
 
 import font.Fonts;
 
@@ -24,8 +25,8 @@ public class Rational extends BasicGame {
 	private TrueTypeFont gameFont;
 	private int playerX=250, playerMove=0;
 	
-	TextBox tBox = new TextBox(Rational.getWidth()/2 - 500/2, 225, 500, 100,
-			"What? Where am I? Why is everything black?", Color.white);
+	Rect boxFrame = new Rect(Rational.getWidth()/2 - 500/2, 225, 500, 100);
+	TextBox tBox = new TextBox(boxFrame, "What? Where am I? Why is everything black?", Color.white);
 	
 	public void init(GameContainer container) throws SlickException {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);

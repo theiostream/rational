@@ -4,64 +4,37 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.TrueTypeFont;
 
+import component.Coords.Rect;
+
 public class TextBox implements ITextBox {
-	private float x, y, width, height;
+	private Rect rect;
 	private Color color;
 	private String text;
 	
 	private static int Y_OFFSET = 15;
 	
-	public TextBox(float x, float y, float width, float height, String text, Color color) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+	public TextBox(Rect rect, String text, Color color) {
+		this.rect = rect;
 		this.text = text;
 		this.color = color;
 	}
 	
-	public TextBox(float x, float y, float width, float height, String text, float red, float green, float blue) {
-		this(x, y, width, height, text, new Color(red, green, blue));
+	public TextBox(Rect rect, String text, float red, float green, float blue) {
+		this(rect, text, new Color(red, green, blue));
 	}
 	
 	@Override
 	public void draw(Graphics g, TrueTypeFont f) {
 		g.setColor(Color.white);
-		g.drawRect(x, (float)y, (float)width, (float)height);
-		float textX = x + ((width/2 - f.getWidth(text)/2));
-		float textY = y + Y_OFFSET;
+		g.drawRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+		float textX = rect.origin.x + ((rect.size.width/2 - f.getWidth(text)/2));
+		float textY = rect.origin.y + Y_OFFSET;
 		f.drawString(textX, textY, text);
 	}
 
 	@Override
 	public void update(int delta) {
 
-	}
-
-	@Override
-	public void setLocation(float x, float y) {
-		setX(x);
-		setY(y);
-	}
-
-	@Override
-	public void setX(float x) {
-		this.x = x;
-	}
-
-	@Override
-	public void setY(float y) {
-		this.y = y;
-	}
-
-	@Override
-	public void setWidth(float width) {
-		this.width = width;
-	}
-
-	@Override
-	public void setHeight(float height) {
-		this.height = height;
 	}
 	
 	@Override
@@ -83,30 +56,20 @@ public class TextBox implements ITextBox {
 	public void setColor(float red, float green, float blue){
 		this.color = new Color(red, green, blue);
 	}
-
-	@Override
-	public double getX() {
-		return x;
-	}
-
-	@Override
-	public double getY() {
-		return y;
-	}
-
-	@Override
-	public double getWidth() {
-		return width;
-	}
-
-	@Override
-	public double getHeight() {
-		return height;
-	}
 	
 	@Override
 	public String getText(){
 		return text;
+	}
+
+	@Override
+	public void setRect(Rect rect) {
+		this.rect = rect;
+	}
+
+	@Override
+	public Rect getRect() {
+		return this.rect;
 	}
 
 }
