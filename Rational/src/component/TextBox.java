@@ -5,7 +5,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.TrueTypeFont;
 
 public class TextBox implements ITextBox {
-
 	private float x, y, width, height;
 	private Color color;
 	private String text;

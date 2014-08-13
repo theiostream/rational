@@ -10,6 +10,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 
 import component.TextBox;
+
 import font.Fonts;
 
 public class Rational extends BasicGame {
@@ -41,8 +42,6 @@ public class Rational extends BasicGame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	public void update(GameContainer container, int delta) throws SlickException {
