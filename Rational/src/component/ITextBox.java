@@ -20,5 +20,6 @@ public interface ITextBox {
 	public double getWidth();
 	public double getHeight();
 	public String getText();
+	public Color getColor();
 	
 }

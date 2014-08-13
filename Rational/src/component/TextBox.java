@@ -6,9 +6,11 @@ import org.newdawn.slick.TrueTypeFont;
 
 public class TextBox implements ITextBox {
 
-	public float red, green, blue, x, y, width, height;
-	public Color color;
-	public String text;
+	private float x, y, width, height;
+	private Color color;
+	private String text;
+	
+	private static int Y_OFFSET = 15;
 	
 	public TextBox(float x, float y, float width, float height, String text, Color color) {
 		this.x = x;
@@ -20,20 +22,15 @@ public class TextBox implements ITextBox {
 	}
 	
 	public TextBox(float x, float y, float width, float height, String text, float red, float green, float blue) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		this.text = text;
-		this.color = new Color(red, green, blue);
+		this(x, y, width, height, text, new Color(red, green, blue));
 	}
-
+	
 	@Override
 	public void draw(Graphics g, TrueTypeFont f) {
 		g.setColor(Color.white);
 		g.drawRect(x, (float)y, (float)width, (float)height);
-		float textX = x +((width - f.getWidth(text)/ 2));
-		float textY = y +((height - f.getHeight(text)/ 2));
+		float textX = x + ((width/2 - f.getWidth(text)/2));
+		float textY = y + Y_OFFSET;
 		f.drawString(textX, textY, text);
 	}
 
@@ -71,6 +68,11 @@ public class TextBox implements ITextBox {
 	@Override
 	public void setText(String text){
 		this.text = text;
+	}
+	
+	@Override
+	public Color getColor() {
+		return this.color;
 	}
 	
 	@Override
