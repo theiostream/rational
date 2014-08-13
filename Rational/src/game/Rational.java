@@ -1,5 +1,7 @@
 package game;
 
+import level.TestLevel;
+
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.BasicGame;
@@ -15,6 +17,8 @@ import component.Coords.Rect;
 import font.Fonts;
 
 public class Rational extends BasicGame {
+	private TestLevel testLevel = new TestLevel();
+	
 	private TrueTypeFont gameFont;
 	private int playerX = 250, playerMove = 0;
 	
@@ -50,16 +54,19 @@ public class Rational extends BasicGame {
 	}
 	
 	public void update(GameContainer container, int delta) throws SlickException {
+		testLevel.update(delta);
 		playerX += playerMove;
 	}
 	
 	public void render(GameContainer container, Graphics g) throws SlickException {
-		tBox.draw(g, gameFont);
-		g.setColor(Color.green);
-		g.fillRect(playerX, 500, 50, 50);
+		testLevel.render(g);
+		//tBox.draw(g, gameFont);
+		//g.setColor(Color.green);
+		//g.fillRect(playerX, 500, 50, 50);
 	}
 	
 	public void keyPressed(int key, char c) {
+		testLevel.keyPressed(key, c);
 		if (key == Keyboard.KEY_RIGHT) {
 			playerMove = 1;
 		}
@@ -69,6 +76,7 @@ public class Rational extends BasicGame {
 	}
 	
 	public void keyReleased(int key, char c) {
+		testLevel.keyReleased(key, c);
 		playerMove = 0;
 	}
 	
