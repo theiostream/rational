@@ -60,7 +60,6 @@ public class Rational extends BasicGame {
 	}
 	
 	public void keyPressed(int key, char c) {
-		Level.keyPressed(key, c);
 		if (key == Keyboard.KEY_RIGHT) {
 			playerMove = 1;
 		}
@@ -70,7 +69,6 @@ public class Rational extends BasicGame {
 	}
 	
 	public void keyReleased(int key, char c) {
-		Level.keyReleased(key, c);
 		playerMove = 0;
 	}
 	
