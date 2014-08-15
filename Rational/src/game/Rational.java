@@ -1,5 +1,6 @@
 package game;
 
+import level.LevelDivisor;
 import level.TestLevel;
 
 import org.lwjgl.input.Keyboard;
@@ -13,14 +14,16 @@ import org.newdawn.slick.TrueTypeFont;
 
 import component.TextBox;
 import component.Coords.Rect;
-
 import font.Fonts;
 
 public class Rational extends BasicGame {
-	private TestLevel testLevel = new TestLevel();
-	
+	@SuppressWarnings("unused")
 	private TrueTypeFont gameFont;
 	private int playerX = 250, playerMove = 0;
+	
+	private LevelDivisor lDivisor = new LevelDivisor();
+	
+	int level = 0;
 	
 	Rect boxFrame = new Rect(Rational.getWidth()/2 - 500/2, 25, 500, 100);
 	TextBox tBox = new TextBox(boxFrame, "What? Where am I? Why is everything black?", Color.white);
@@ -54,19 +57,19 @@ public class Rational extends BasicGame {
 	}
 	
 	public void update(GameContainer container, int delta) throws SlickException {
-		testLevel.update(delta);
-		playerX += playerMove;
+		lDivisor.updateLevel(level, delta);
+		//playerX += playerMove;
 	}
 	
 	public void render(GameContainer container, Graphics g) throws SlickException {
-		testLevel.render(g);
+		lDivisor.drawLevel(level, g);
 		//tBox.draw(g, gameFont);
 		//g.setColor(Color.green);
 		//g.fillRect(playerX, 500, 50, 50);
 	}
 	
 	public void keyPressed(int key, char c) {
-		testLevel.keyPressed(key, c);
+		lDivisor.keyPressedLevel(level, key, c);
 		if (key == Keyboard.KEY_RIGHT) {
 			playerMove = 1;
 		}
@@ -76,8 +79,16 @@ public class Rational extends BasicGame {
 	}
 	
 	public void keyReleased(int key, char c) {
-		testLevel.keyReleased(key, c);
+		lDivisor.keyReleasedLevel(level, key, c);
 		playerMove = 0;
+	}
+	
+	public int getLevel(){
+		return level;
+	}
+	
+	public void setLevel(int level){
+		this.level = level;
 	}
 	
 	public static int getWidth() {

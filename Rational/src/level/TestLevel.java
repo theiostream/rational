@@ -36,8 +36,9 @@ public class TestLevel implements ILevel {
 	}
 
 	@Override
-	public void render(Graphics g) throws SlickException {
+	public void draw(Graphics g) throws SlickException {
 		g.drawRect(bx, by, bwidth, bheight);
+		g.drawRect(bx + 400, by - 100, bwidth, bheight);
 		g.drawRect(x, y, width, height);
 	}
 	
