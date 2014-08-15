@@ -1,7 +1,6 @@
 package game;
 
 import level.LevelDivisor;
-import level.TestLevel;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -36,7 +35,7 @@ public class Rational extends BasicGame {
 		initGL();
 		initFonts();
 	}
-	
+
 	public void initGL(){
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();

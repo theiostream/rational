@@ -26,9 +26,9 @@ public class TextBox implements ITextBox {
 	@Override
 	public void draw(Graphics g, TrueTypeFont f) {
 		g.setColor(Color.white);
-		g.drawRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-		float textX = rect.origin.x + ((rect.size.width/2 - f.getWidth(text)/2));
-		float textY = rect.origin.y + Y_OFFSET;
+		g.drawRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+		float textX = rect.getX() + ((rect.getWidth()/2 - f.getWidth(text)/2));
+		float textY = rect.getY() + Y_OFFSET;
 		f.drawString(textX, textY, text);
 	}
 
