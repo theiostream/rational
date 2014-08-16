@@ -1,6 +1,8 @@
 package component;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
 import component.Coords.Point;
 import component.Coords.Rect;
@@ -19,6 +21,8 @@ public interface IDrawable {
 	public float getHeight();
 	public Size getSize();
 	public Rect getRect();
+	public Color getColor();
+	public Image getImage();
 	public void setX(float x);
 	public void setY(float y);
 	public void setPoint(Point point);
@@ -27,6 +31,9 @@ public interface IDrawable {
 	public void setSize(Size size);
 	public void setRect(Rect rect);
 	public void setSpeed(float speed);
+	public void setColor(Color color);
+	public void setColor(float r, float g, float b);
+	public void setImage(Image image);
 	public void moveRight();
 	public void moveLeft();
 	public void stopX();

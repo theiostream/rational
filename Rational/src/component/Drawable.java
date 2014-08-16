@@ -156,6 +156,16 @@ public abstract class Drawable implements IDrawable {
 	public Rect getRect() {
 		return this.rect;
 	}
+	
+	@Override
+	public Color getColor() {
+		return color;
+	}
+
+	@Override
+	public Image getImage() {
+		return image;
+	}
 
 	@Override
 	public void setX(float x) {
@@ -198,6 +208,21 @@ public abstract class Drawable implements IDrawable {
 	@Override
 	public void setSpeed(float speed) {
 		this.speed = speed;
+	}
+	
+	@Override
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+	@Override
+	public void setColor(float r, float g, float b) {
+		this.color = new Color(r, g, b);
+	}
+
+	@Override
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
 	@Override
