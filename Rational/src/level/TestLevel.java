@@ -4,6 +4,7 @@ import game.ILevel;
 import game.Rational;
 
 import org.lwjgl.input.Keyboard;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
@@ -13,8 +14,9 @@ public class TestLevel implements ILevel {
 	float x = 5, y = 455, motionX = 0, width = 50, height = 50;
 	
 	public TestLevel() {
-		bgObjList.add(5, 255, 150, 50);
-		bgObjList.add(405, 155, 150, 50);
+		bgObjList.add(5, 255, 150, 50, false);
+		bgObjList.add(405, 155, 100, 75, true);
+		bgObjList.add(600, 90, 50, 125, Color.cyan, true);
 	}
 
 	@Override
@@ -39,6 +41,7 @@ public class TestLevel implements ILevel {
 	@Override
 	public void draw(Graphics g) throws SlickException {
 		bgObjList.draw(g);
+		g.setColor(Color.white);
 		g.drawRect(x, y, width, height);
 	}
 	

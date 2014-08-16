@@ -30,7 +30,7 @@ public class BgObjList {
 	
 	public void draw(Graphics g){
 		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).draw(g);
+			bgObjs.get(i).draw(g); 
 		}
 	}
 	
@@ -88,20 +88,20 @@ public class BgObjList {
 		}
 	}
 	
-	public void add(float x, float y, float width, float height){
-		bgObjs.add(new BgObj(x, y, width, height));
+	public void add(float x, float y, float width, float height, boolean fill){
+		bgObjs.add(new BgObj(x, y, width, height, fill));
 	}
 	
-	public void add(Point point, Size size){
-		bgObjs.add(new BgObj(point, size));
+	public void add(Point point, Size size, boolean fill){
+		bgObjs.add(new BgObj(point, size, fill));
 	}
 	
-	public void add(float x, float y, float width, float height, Color color){
-		bgObjs.add(new BgObj(x, y, width, height, color));
+	public void add(float x, float y, float width, float height, Color color, boolean fill){
+		bgObjs.add(new BgObj(x, y, width, height, color, fill));
 	}
 	
-	public void add(Point point, Size size, Color color){
-		bgObjs.add(new BgObj(point, size, color));
+	public void add(Point point, Size size, Color color, boolean fill){
+		bgObjs.add(new BgObj(point, size, color, fill));
 	}
 	
 	public void add(float x, float y, float width, float height, String texture){

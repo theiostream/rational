@@ -15,6 +15,7 @@ public class BgObj implements IBgObj {
 	private float motionX, motionY, speed;
 	private Color color;
 	private Image image;
+	private boolean fill;
 	
 	public BgObj(float x, float y, float width, float height, float motionX, float motionY, float speed, Color color, Image image) {
 		this.rect = new Rect(new Point(x, y), new Size(width, height));
@@ -23,6 +24,7 @@ public class BgObj implements IBgObj {
 		this.speed = speed;
 		this.color = color;
 		this.image = image;
+		this.fill = false;
 	}
 	
 	public BgObj(Point point, Size size, float motionX, float motionY, float speed, Color color, Image image){
@@ -32,48 +34,51 @@ public class BgObj implements IBgObj {
 		this.speed = speed;
 		this.color = color;
 		this.image = image;
+		this.fill = false;
 	}
 	
-	public BgObj(float x, float y, float width, float height, float motionX, float motionY, float speed, Color color) {
+	public BgObj(float x, float y, float width, float height, float motionX, float motionY, float speed, Color color, boolean fill) {
 		this.rect = new Rect(new Point(x, y), new Size(width, height));
 		this.motionX = motionX;
 		this.motionY = motionY;
 		this.speed = speed;
 		this.color = color;
 		this.image = null;
+		this.fill = fill;
 	}
 	
-	public BgObj(Point point, Size size, float motionX, float motionY, float speed, Color color){
+	public BgObj(Point point, Size size, float motionX, float motionY, float speed, Color color, boolean fill){
 		this.rect = new Rect(point, size);
 		this.motionX = motionX;
 		this.motionY = motionY;
 		this.speed = speed;
 		this.color = color;
 		this.image = null;
+		this.fill = fill;
 	}
 	
-	public BgObj(float x, float y, float width, float height){
-		this(new Point(x, y), new Size(width, height), 0f, 0f, 1f, Color.white);
+	public BgObj(float x, float y, float width, float height, boolean fill){
+		this(new Point(x, y), new Size(width, height), 0f, 0f, 1f, Color.white, fill);
 	}
 	
-	public BgObj(Point point, Size size){
-		this(point, size, 0f, 0f, 1f, Color.white);
+	public BgObj(Point point, Size size, boolean fill){
+		this(point, size, 0f, 0f, 1f, Color.white, fill);
 	}
 	
-	public BgObj(float x, float y, float width, float height, Color color){
-		this(new Point(x, y), new Size(width, height), 0f, 0f, 1f, color);
+	public BgObj(float x, float y, float width, float height, Color color, boolean fill){
+		this(new Point(x, y), new Size(width, height), 0f, 0f, 1f, color, fill);
 	}
 	
-	public BgObj(Point point, Size size, Color color){
-		this(point, size, 0f, 0f, 1f, color);
+	public BgObj(Point point, Size size, Color color, boolean fill){
+		this(point, size, 0f, 0f, 1f, color, fill);
 	}
 	
-	public BgObj(float x, float y, float width, float height, float red, float green, float blue){
-		this(new Point(x, y), new Size(width, height), 0f, 0f, 1f, new Color(red, green, blue));
+	public BgObj(float x, float y, float width, float height, float red, float green, float blue, boolean fill){
+		this(new Point(x, y), new Size(width, height), 0f, 0f, 1f, new Color(red, green, blue), fill);
 	}
 	
-	public BgObj(Point point, Size size, float red, float green, float blue){
-		this(point, size, 0f, 0f, 1f, new Color(red, green, blue));
+	public BgObj(Point point, Size size, float red, float green, float blue, boolean fill){
+		this(point, size, 0f, 0f, 1f, new Color(red, green, blue), fill);
 	}
 	
 	public BgObj(float x, float y, float width, float height, Color color, Image image){
@@ -92,43 +97,43 @@ public class BgObj implements IBgObj {
 		this(point, size, 0f, 0f, 1f, new Color(red, green, blue), image);
 	}
 	
-	public BgObj(float x, float y, float width, float height, float speed){
-		this(new Point(x, y), new Size(width, height), 0f, 0f, speed, Color.white);
+	public BgObj(float x, float y, float width, float height, float speed, boolean fill){
+		this(new Point(x, y), new Size(width, height), 0f, 0f, speed, Color.white, fill);
 	}
 	
-	public BgObj(Point point, Size size, float speed){
-		this(point, size, 0f, 0f, speed, Color.white);
+	public BgObj(Point point, Size size, float speed, boolean fill){
+		this(point, size, 0f, 0f, speed, Color.white, fill);
 	}
 	
-	public BgObj(float x, float y, float width, float height, Color color, float speed){
-		this(new Point(x, y), new Size(width, height), 0f, 0f, speed, color);
+	public BgObj(float x, float y, float width, float height, Color color, float speed, boolean fill){
+		this(new Point(x, y), new Size(width, height), 0f, 0f, speed, color, fill);
 	}
 	
-	public BgObj(Point point, Size size, Color color, float speed){
-		this(point, size, 0f, 0f, speed, color);
+	public BgObj(Point point, Size size, Color color, float speed, boolean fill){
+		this(point, size, 0f, 0f, speed, color, fill);
 	}
 	
-	public BgObj(float x, float y, float width, float height, float red, float green, float blue, float speed){
-		this(new Point(x, y), new Size(width, height), 0f, 0f, speed, new Color(red, green, blue));
+	public BgObj(float x, float y, float width, float height, float red, float green, float blue, float speed, boolean fill){
+		this(new Point(x, y), new Size(width, height), 0f, 0f, speed, new Color(red, green, blue), fill);
 	}
 	
-	public BgObj(Point point, Size size, float red, float green, float blue, float speed){
-		this(point, size, 0f, 0f, speed, new Color(red, green, blue));
+	public BgObj(Point point, Size size, float red, float green, float blue, float speed, boolean fill){
+		this(point, size, 0f, 0f, speed, new Color(red, green, blue), fill);
 	}
 	
-	public BgObj(float x, float y, float width, float height, Color color, Image image, float speed){
+	public BgObj(float x, float y, float width, float height, Color color, Image image, float speed, boolean fill){
 		this(new Point(x, y), new Size(width, height), 0f, 0f, speed, color, image);
 	}
 	
-	public BgObj(Point point, Size size, Color color, Image image, float speed){
+	public BgObj(Point point, Size size, Color color, Image image, float speed, boolean fill){
 		this(point, size, 0f, 0f, speed, color, image);
 	}
 	
-	public BgObj(float x, float y, float width, float height, float red, float green, float blue, Image image, float speed){
+	public BgObj(float x, float y, float width, float height, float red, float green, float blue, Image image, float speed, boolean fill){
 		this(new Point(x, y), new Size(width, height), 0f, 0f, speed, new Color(red, green, blue), image);
 	}
 	
-	public BgObj(Point point, Size size, float red, float green, float blue, Image image, float speed){
+	public BgObj(Point point, Size size, float red, float green, float blue, Image image, float speed, boolean fill){
 		this(point, size, 0f, 0f, speed, new Color(red, green, blue), image);
 	}
 	
@@ -255,6 +260,10 @@ public class BgObj implements IBgObj {
 		}else{
 			g.setColor(this.color);
 			g.drawRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+			if(fill){
+				g.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+			}
+			
 		}
 	}
 
