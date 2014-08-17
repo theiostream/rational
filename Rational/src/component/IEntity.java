@@ -1,6 +1,9 @@
 package component;
 
+import org.newdawn.slick.Graphics;
+
 public interface IEntity {
+	public void draw(Graphics g);
 	public void update(int delta);
 	public void keyPressed(int key, char c);
 	public void keyReleased(int key, char c);
@@ -8,6 +11,8 @@ public interface IEntity {
 	public float getBaseDamage();
 	public float getDamage();
 	public float getDamageIncr();
+	public float getMotionX();
+	public float getMotionY();
 	public void setHealth(float health);
 	public void setBaseDamage(float baseDamage);
 	public void setDamageIncr(float damageIncr);

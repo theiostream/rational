@@ -9,8 +9,8 @@ import component.Coords.Rect;
 import component.Coords.Size;
 
 public interface IDrawable {
-	public void draw(Graphics g);
 	public void update(int delta);
+	public void draw(Graphics g);
 	public void keyPressed(int key, char c);
 	public void keyReleased(int key, char c);
 	public void intersects(Drawable drawable);
@@ -41,4 +41,5 @@ public interface IDrawable {
 	public void moveDown();
 	public void stopY();
 	public void stop();
+	
 }

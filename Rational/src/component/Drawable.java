@@ -56,11 +56,11 @@ public abstract class Drawable implements IDrawable {
 		this.image = null;
 		this.fill = fill;
 	}
-
+	
 	@Override
-	public void update(int delta) {
-		setX(this.getX() + motionX);
-		setY(this.getY() + motionY);
+	public void update(int delta){
+		setX(getX() + (motionX * speed));
+		setY(getY() + (motionY * speed));
 	}
 
 	@Override
@@ -73,9 +73,10 @@ public abstract class Drawable implements IDrawable {
 			}
 		}else{
 			g.setColor(this.color);
-			g.drawRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 			if(fill){
 				g.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+			}else{
+				g.drawRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 			}
 		}
 	}
@@ -118,7 +119,6 @@ public abstract class Drawable implements IDrawable {
 
 	@Override
 	public void intersects(Drawable drawable) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -227,12 +227,12 @@ public abstract class Drawable implements IDrawable {
 
 	@Override
 	public void moveRight() {
-		this.motionX = 1 * this.speed;
+		this.motionX = 1;
 	}
 
 	@Override
 	public void moveLeft() {
-		this.motionX = -1 * this.speed;
+		this.motionX = -1;
 	}
 
 	@Override
@@ -242,12 +242,12 @@ public abstract class Drawable implements IDrawable {
 	
 	@Override
 	public void moveUp() {
-		this.motionY = -1 * this.speed;
+		this.motionY = -1;
 	}
 
 	@Override
 	public void moveDown() {
-		this.motionY = 1 * this.speed;
+		this.motionY = 1;
 	}
 
 	@Override

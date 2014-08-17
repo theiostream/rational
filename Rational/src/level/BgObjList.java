@@ -16,33 +16,23 @@ import component.BgObj;
 import component.Coords.Point;
 import component.Coords.Size;
 
+import entity.Player;
+
 public class BgObjList {
 
 	ArrayList<BgObj> bgObjs = new ArrayList<BgObj>();
 	
 	public BgObjList() {}
 
-	public void update(int delta){
+	public void update(int delta, Player player){
 		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).update(delta);
+			bgObjs.get(i).update(delta, player);
 		}
 	}
 	
 	public void draw(Graphics g){
 		for(int i = 0; i < bgObjs.size(); i++){
 			bgObjs.get(i).draw(g); 
-		}
-	}
-	
-	public void keyPressed(int key, char c){
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).keyPressed(key, c);
-		}
-	}
-	
-	public void keyReleased(int key, char c){
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).keyReleased(key, c);
 		}
 	}
 	

@@ -5,8 +5,28 @@ import org.newdawn.slick.Image;
 
 import component.Coords.Point;
 import component.Coords.Size;
+import entity.Player;
+import game.Rational;
 
 public class BgObj extends Drawable implements IDrawable {
+	
+	public void update(int delta, Player player){
+		if(player.getX() + player.getWidth() + 150 >= Rational.getWidth() && player.getMotionX() == 1){
+			player.stopX();
+			moveLeft();
+		}else if(player.getX() <= 150 && player.getMotionX() == -1){
+			moveRight();
+			player.stopX();
+		}else if(player.getY() + player.getHeight() + 50 >= Rational.getHeight() && player.getMotionY() == 1){
+			moveDown();
+			player.stopY();
+		}else if(player.getY() <= 50 && player.getMotionY() == -1){
+			moveUp();
+			player.stopY();
+		}else{
+			update(delta);
+		}
+	}
 	
 	public BgObj(float x, float y, float width, float height, boolean fill){
 		super(new Point(x, y), new Size(width, height), 0f, 0f, 1f, Color.white, fill);

@@ -189,6 +189,16 @@ public abstract class Entity extends Drawable implements IEntity {
 	}
 	
 	@Override
+	public float getMotionX(){
+		return super.motionX;
+	}
+	
+	@Override
+	public float getMotionY(){
+		return super.motionY;
+	}
+	
+	@Override
 	public void setHealth(float health) {
 		this.health = health;
 	}
