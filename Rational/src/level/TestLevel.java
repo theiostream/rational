@@ -14,7 +14,7 @@ public class TestLevel implements ILevel {
 	BgObjList bgObjList = new BgObjList();
 	
 	public TestLevel() {
-		player = new Player(5, 455);
+		player = new Player(5, 455, false);
 		bgObjList.add(5, 255, 150, 50, false);
 		bgObjList.add(405, 155, 100, 75, true);
 		bgObjList.add(600, 90, 50, 125, Color.cyan, true);
@@ -28,7 +28,7 @@ public class TestLevel implements ILevel {
 	@Override
 	public void update(int delta) throws SlickException {
 		player.update(delta);
-		bgObjList.update(delta, player);
+		bgObjList.update(delta, player, false);
 	}
 
 	@Override

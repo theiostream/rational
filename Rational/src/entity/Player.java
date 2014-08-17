@@ -14,7 +14,7 @@ public class Player extends Entity implements IEntity {
 	
 	private static float width = 50, height = 50, health = 20, baseDmg = 2;
 	
-	public Player(float x, float y) {
+	public Player(float x, float y, boolean yMove) {
 		super(x, y, width, height, health, baseDmg);
 	}
 
