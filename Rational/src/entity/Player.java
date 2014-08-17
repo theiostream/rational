@@ -13,85 +13,106 @@ import component.Coords.Size;
 public class Player extends Entity implements IEntity {
 	
 	private static float width = 50, height = 50, health = 20, baseDmg = 2;
+	private boolean yMove;
 	
 	public Player(float x, float y, boolean yMove) {
 		super(x, y, width, height, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(Point point) {
+	public Player(Point point, boolean yMove) {
 		super(point, new Size(width, height), health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(float x, float y, Color color) {
+	public Player(float x, float y, Color color, boolean yMove) {
 		super(x, y, width, height, color, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(Point point, Color color) {
+	public Player(Point point, Color color, boolean yMove) {
 		super(point, new Size(width, height), color, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(float x, float y, float red, float green, float blue) {
+	public Player(float x, float y, float red, float green, float blue, boolean yMove) {
 		super(x, y, width, height, red, green, blue, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(Point point, float red, float green, float blue) {
+	public Player(Point point, float red, float green, float blue, boolean yMove) {
 		super(point, new Size(width, height), red, green, blue, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(float x, float y, Color color, Image image) {
+	public Player(float x, float y, Color color, Image image, boolean yMove) {
 		super(x, y, width, height, color, image, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(Point point, Color color, Image image) {
+	public Player(Point point, Color color, Image image, boolean yMove) {
 		super(point, new Size(width, height), color, image, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(float x, float y, float red, float green, float blue, Image image) {
+	public Player(float x, float y, float red, float green, float blue, Image image, boolean yMove) {
 		super(x, y, width, height, red, green, blue, image, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(Point point, float red, float green, float blue, Image image) {
+	public Player(Point point, float red, float green, float blue, Image image, boolean yMove) {
 		super(point, new Size(width, height), red, green, blue, image, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(float x, float y, float speed) {
+	public Player(float x, float y, float speed, boolean yMove) {
 		super(x, y, width, height, speed, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(Point point, float speed) {
+	public Player(Point point, float speed, boolean yMove) {
 		super(point, new Size(width, height), speed, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(float x, float y, Color color, float speed) {
+	public Player(float x, float y, Color color, float speed, boolean yMove) {
 		super(x, y, width, height, color, speed, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(Point point, Color color, float speed) {
+	public Player(Point point, Color color, float speed, boolean yMove) {
 		super(point, new Size(width, height), color, speed, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(float x, float y, float red, float green, float blue, float speed) {
+	public Player(float x, float y, float red, float green, float blue, float speed, boolean yMove) {
 		super(x, y, width, height, red, green, blue, speed, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(Point point, float red, float green, float blue, float speed) {
+	public Player(Point point, float red, float green, float blue, float speed, boolean yMove) {
 		super(point, new Size(width, height), red, green, blue, speed, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(float x, float y, Color color, Image image, float speed) {
+	public Player(float x, float y, Color color, Image image, float speed, boolean yMove) {
 		super(x, y, width, height, color, image, speed, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(Point point, Color color, Image image, float speed) {
+	public Player(Point point, Color color, Image image, float speed, boolean yMove) {
 		super(point, new Size(width, height), color, image, speed, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(float x, float y, float red, float green, float blue, Image image, float speed) {
+	public Player(float x, float y, float red, float green, float blue, Image image, float speed, boolean yMove) {
 		super(x, y, width, height, red, green, blue, image, speed, health, baseDmg);
+		this.yMove = yMove;
 	}
 
-	public Player(Point point, float red, float green, float blue, Image image, float speed) {
+	public Player(Point point, float red, float green, float blue, Image image, float speed, boolean yMove) {
 		super(point, new Size(width, height), red, green, blue, image, speed, health, baseDmg);
+		this.yMove = yMove;
 	}
 
 	@Override
@@ -103,7 +124,9 @@ public class Player extends Entity implements IEntity {
 	@Override
 	public void update(int delta){
 		setX(getX() + motionX);
-		setY(getY() + motionY);
+		if(yMove){
+			setY(getY() + motionY);
+		}
 	}
 	
 	@Override
@@ -115,12 +138,16 @@ public class Player extends Entity implements IEntity {
 		case Keyboard.KEY_RIGHT:
 			super.moveRight();
 			break;
-		case Keyboard.KEY_UP:
-			super.moveUp();
-			break;
-		case Keyboard.KEY_DOWN:
-			super.moveDown();
-			break;
+		}
+		if(yMove){
+			switch(key){
+			case Keyboard.KEY_UP:
+				super.moveUp();
+				break;
+			case Keyboard.KEY_DOWN:
+				super.moveDown();
+				break;
+			}
 		}
 	}
 	
