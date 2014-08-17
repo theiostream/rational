@@ -10,21 +10,27 @@ import game.Rational;
 
 public class BgObj extends Drawable implements IDrawable {
 	
-	public void update(int delta, Player player){
+	public void update(int delta, Player player, Boolean yScroll){	
 		if(player.getX() + player.getWidth() + 150 >= Rational.getWidth() && player.getMotionX() == 1){
 			player.stopX();
 			moveLeft();
 		}else if(player.getX() <= 150 && player.getMotionX() == -1){
 			moveRight();
 			player.stopX();
-		}else if(player.getY() + player.getHeight() + 50 >= Rational.getHeight() && player.getMotionY() == 1){
-			moveDown();
-			player.stopY();
-		}else if(player.getY() <= 50 && player.getMotionY() == -1){
-			moveUp();
-			player.stopY();
 		}else{
 			update(delta);
+		}
+		
+		if(yScroll){
+			if(player.getY() + player.getHeight() + 150 >= Rational.getHeight() && player.getMotionY() == 1){
+				moveUp();
+				player.stopY();
+			}else if(player.getY() <= 150 && player.getMotionY() == -1){
+				moveDown();
+				player.stopY();
+			}else{
+				update(delta);
+			}
 		}
 	}
 	

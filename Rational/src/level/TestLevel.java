@@ -3,6 +3,7 @@ package level;
 import entity.Player;
 import game.ILevel;
 
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -42,7 +43,21 @@ public class TestLevel implements ILevel {
 	
 	public void keyReleased(int key, char c) {
 		player.keyReleased(key, c);
-		bgObjList.stopX();
+		switch(key){
+		case Keyboard.KEY_LEFT:
+			bgObjList.stopX();
+			break;
+		case Keyboard.KEY_RIGHT:
+			bgObjList.stopX();
+			break;
+		case Keyboard.KEY_UP:
+			bgObjList.stopY();
+			break;
+		case Keyboard.KEY_DOWN:
+			bgObjList.stopY();
+			break;
+		}
+		
 	}
 
 }

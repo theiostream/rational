@@ -26,7 +26,7 @@ public class BgObjList {
 
 	public void update(int delta, Player player){
 		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).update(delta, player);
+			bgObjs.get(i).update(delta, player, false);
 		}
 	}
 	
