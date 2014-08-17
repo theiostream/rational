@@ -1,4 +1,4 @@
-package level;
+package level.base;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,8 +13,8 @@ import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
 import component.BgObj;
-import component.Coords.Point;
-import component.Coords.Size;
+import component.coords.Point;
+import component.coords.Size;
 
 import entity.Player;
 
@@ -23,7 +23,7 @@ public class BgObjList {
 	ArrayList<BgObj> bgObjs = new ArrayList<BgObj>();
 	
 	public BgObjList() {}
-
+	
 	public void update(int delta, Player player, boolean yScroll){
 		for(int i = 0; i < bgObjs.size(); i++){
 			bgObjs.get(i).update(delta, player, yScroll);

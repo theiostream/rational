@@ -3,8 +3,8 @@ package component;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
-import component.Coords.Point;
-import component.Coords.Size;
+import component.coords.Point;
+import component.coords.Size;
 import entity.Player;
 import game.Rational;
 

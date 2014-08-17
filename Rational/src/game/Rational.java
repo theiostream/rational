@@ -1,6 +1,6 @@
 package game;
 
-import level.LevelDivisor;
+import level.base.LevelDivisor;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -12,7 +12,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 
 import component.TextBox;
-import component.Coords.Rect;
+import component.coords.Rect;
 import font.Fonts;
 
 public class Rational extends BasicGame {
@@ -34,6 +34,8 @@ public class Rational extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		initGL();
 		initFonts();
+		
+		lDivisor.initLevel(level);
 	}
 
 	public void initGL(){
@@ -88,6 +90,7 @@ public class Rational extends BasicGame {
 	
 	public void setLevel(int level){
 		this.level = level;
+		lDivisor.initLevel(level);
 	}
 	
 	public static int getWidth() {

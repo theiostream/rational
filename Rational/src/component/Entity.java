@@ -4,8 +4,8 @@ import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
-import component.Coords.Point;
-import component.Coords.Size;
+import component.coords.Point;
+import component.coords.Size;
 
 public abstract class Entity extends Drawable implements IEntity {
 

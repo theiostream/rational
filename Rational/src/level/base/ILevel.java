@@ -1,4 +1,4 @@
-package game;
+package level.base;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;

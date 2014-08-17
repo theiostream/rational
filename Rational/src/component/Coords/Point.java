@@ -1,4 +1,4 @@
-package component.Coords;
+package component.coords;
 
 public class Point {
 	float x, y;

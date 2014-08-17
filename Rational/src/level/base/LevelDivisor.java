@@ -1,8 +1,9 @@
-package level;
+package level.base;
 
-import game.ILevel;
 
 import java.util.ArrayList;
+
+import level.levels.TestLevel;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -44,9 +45,12 @@ public class LevelDivisor {
 	}
 	
 	public void initLevel(int level){
+		System.out.println("init level");
+		
 		for(int i = 0; i < levels.size(); i++){
 			if(level == i){
 				try {
+					System.out.println("fuck you");
 					levels.get(i).init();
 				} catch (SlickException e) {
 					e.printStackTrace();

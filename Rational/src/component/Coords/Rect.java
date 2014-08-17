@@ -1,4 +1,4 @@
-package component.Coords;
+package component.coords;
 
 public class Rect {
 	public Point origin;

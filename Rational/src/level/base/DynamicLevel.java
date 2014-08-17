@@ -1,28 +1,30 @@
-package level;
-
-import entity.Player;
-import game.ILevel;
+package level.base;
 
 import org.lwjgl.input.Keyboard;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
-public class TestLevel implements ILevel {
-	
-	Player player;
-	BgObjList bgObjList = new BgObjList();
-	
-	public TestLevel() {
-		player = new Player(5, 455, false);
-		bgObjList.add(5, 255, 150, 50, false);
-		bgObjList.add(405, 155, 100, 75, true);
-		bgObjList.add(600, 90, 50, 125, Color.cyan, true);
-	}
+import entity.Player;
 
+public abstract class DynamicLevel implements ILevel {
+	private Player player;
+	private BgObjList bgObjList;
+	
+	public Player getPlayer() {
+		return player;
+	}
+	
+	public BgObjList getObjList() {
+		return bgObjList;
+	}
+	
+	public DynamicLevel() {
+		bgObjList = new BgObjList();
+	}
+	
 	@Override
 	public void init() throws SlickException {
-		
+		player = new Player(5, 455, false);
 	}
 
 	@Override
@@ -59,5 +61,4 @@ public class TestLevel implements ILevel {
 		}
 		
 	}
-
 }

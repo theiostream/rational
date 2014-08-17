@@ -4,7 +4,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.TrueTypeFont;
 
-import component.coords.Rect;
+import component.Coords.Rect;
 
 public interface ITextBox {
 	public void draw(Graphics g, TrueTypeFont f);
@@ -16,4 +16,8 @@ public interface ITextBox {
 	public Rect getRect();
 	public String getText();
 	public Color getColor();
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b3aaf0326c7d9cb79107ef3aef8e2c656fa18e45

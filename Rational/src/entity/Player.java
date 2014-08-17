@@ -7,8 +7,8 @@ import org.newdawn.slick.Image;
 
 import component.Entity;
 import component.IEntity;
-import component.Coords.Point;
-import component.Coords.Size;
+import component.coords.Point;
+import component.coords.Size;
 
 public class Player extends Entity implements IEntity {
 	
