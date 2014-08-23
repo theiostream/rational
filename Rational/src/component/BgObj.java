@@ -3,14 +3,9 @@ package component;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
-<<<<<<< HEAD
 import component.coords.Point;
 import component.coords.Size;
-=======
-import component.Coords.Point;
-import component.Coords.Size;
 
->>>>>>> 3b771fa39d54a664a0e69e434eb67f17ecc3c4cf
 import entity.Player;
 
 public class BgObj extends Drawable implements IDrawable {
