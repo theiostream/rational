@@ -1,38 +1,38 @@
 package level.base;
 
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
-public abstract class StaticLevel implements ILevel {
+import entity.Player;
 
+public abstract class StaticLevel implements ILevel {
+	private Player player;
+	
+	public Player getPlayer() {
+		return player;
+	}
+	
 	@Override
 	public void init() throws SlickException {
-		// TODO Auto-generated method stub
-
+		player = new Player(5, 455, false);
 	}
 
 	@Override
 	public void update(int delta) throws SlickException {
-		// TODO Auto-generated method stub
-
+		player.update(delta);
 	}
 
 	@Override
 	public void draw(Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
-
+		player.draw(g);
 	}
-
-	@Override
+	
 	public void keyPressed(int key, char c) {
-		// TODO Auto-generated method stub
-
+		player.keyPressed(key, c);
 	}
-
-	@Override
+	
 	public void keyReleased(int key, char c) {
-		// TODO Auto-generated method stub
-
+		player.keyReleased(key, c);
 	}
-
 }
