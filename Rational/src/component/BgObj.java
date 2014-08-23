@@ -3,34 +3,37 @@ package component;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
+<<<<<<< HEAD
 import component.coords.Point;
 import component.coords.Size;
+=======
+import component.Coords.Point;
+import component.Coords.Size;
+
+>>>>>>> 3b771fa39d54a664a0e69e434eb67f17ecc3c4cf
 import entity.Player;
-import game.Rational;
 
 public class BgObj extends Drawable implements IDrawable {
 	
-	public void update(int delta, Player player, Boolean yScroll){	
-		if(player.getX() + player.getWidth() + 150 >= Rational.getWidth() && player.getMotionX() == 1){
-			player.stopX();
+	public void update(int delta, Player player, boolean check1, boolean check2, boolean check3, boolean check4, boolean check5, boolean check6){	
+		if(check1){
 			moveLeft();
-		}else if(player.getX() <= 150 && player.getMotionX() == -1){
+			player.stopX();
+		}else if(check2){
 			moveRight();
 			player.stopX();
-		}else{
+		}else if(check3){
 			update(delta);
 		}
 		
-		if(yScroll){
-			if(player.getY() + player.getHeight() + 150 >= Rational.getHeight() && player.getMotionY() == 1){
-				moveUp();
-				player.stopY();
-			}else if(player.getY() <= 150 && player.getMotionY() == -1){
-				moveDown();
-				player.stopY();
-			}else{
-				update(delta);
-			}
+		if(check4){
+			moveUp();
+			player.stopY();
+		}else if(check5){
+			moveDown();
+			player.stopY();
+		}else if(check6){
+			update(delta);
 		}
 	}
 	
