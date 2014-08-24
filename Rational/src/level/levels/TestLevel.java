@@ -8,6 +8,7 @@ import org.newdawn.slick.SlickException;
 public class TestLevel extends DynamicLevel {
 	@Override
 	public void init() throws SlickException {
+		super.init();
 		System.out.println("Why?!" + this.getObjList());
 		
 		this.getObjList().add(5, 255, 150, 50, false);
