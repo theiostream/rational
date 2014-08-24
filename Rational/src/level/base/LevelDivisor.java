@@ -45,12 +45,9 @@ public class LevelDivisor {
 	}
 	
 	public void initLevel(int level){
-		System.out.println("init level");
-		
 		for(int i = 0; i < levels.size(); i++){
 			if(level == i){
 				try {
-					System.out.println("fuck you");
 					levels.get(i).init();
 				} catch (SlickException e) {
 					e.printStackTrace();

@@ -5,7 +5,6 @@ import org.newdawn.slick.Image;
 
 import component.coords.Point;
 import component.coords.Size;
-
 import entity.Player;
 
 public class BgObj extends Drawable implements IDrawable {
