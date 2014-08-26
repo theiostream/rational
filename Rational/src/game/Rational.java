@@ -2,7 +2,6 @@ package game;
 
 import level.base.LevelDivisor;
 
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
@@ -13,12 +12,13 @@ import org.newdawn.slick.TrueTypeFont;
 
 import component.TextBox;
 import component.coords.Rect;
+
 import font.Fonts;
 
 public class Rational extends BasicGame {
+	
 	@SuppressWarnings("unused")
 	private TrueTypeFont gameFont;
-	private int playerX = 250, playerMove = 0;
 	
 	private LevelDivisor lDivisor = new LevelDivisor();
 	
@@ -59,29 +59,18 @@ public class Rational extends BasicGame {
 	
 	public void update(GameContainer container, int delta) throws SlickException {
 		lDivisor.updateLevel(level, delta);
-		//playerX += playerMove;
 	}
 	
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		lDivisor.drawLevel(level, g);
-		//tBox.draw(g, gameFont);
-		//g.setColor(Color.green);
-		//g.fillRect(playerX, 500, 50, 50);
 	}
 	
 	public void keyPressed(int key, char c) {
 		lDivisor.keyPressedLevel(level, key, c);
-		if (key == Keyboard.KEY_RIGHT) {
-			playerMove = 1;
-		}
-		else if (key == Keyboard.KEY_LEFT) {
-			playerMove = -1;
-		}
 	}
 	
 	public void keyReleased(int key, char c) {
 		lDivisor.keyReleasedLevel(level, key, c);
-		playerMove = 0;
 	}
 	
 	public int getLevel(){

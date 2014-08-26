@@ -4,9 +4,11 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.TrueTypeFont;
 
+import component.coords.Point;
 import component.coords.Rect;
+import component.coords.Size;
 
-public class TextBox implements ITextBox {
+public class TextBox extends Drawable implements ITextBox {
 	private Rect rect;
 	private Color color;
 	private String text;
@@ -14,6 +16,7 @@ public class TextBox implements ITextBox {
 	private static int Y_OFFSET = 15;
 	
 	public TextBox(Rect rect, String text, Color color) {
+		super(new Point(rect.getX(), rect.getY()), new Size(rect.getWidth(), rect.getHeight()), 0, 0, 0, color, true);
 		this.rect = rect;
 		this.text = text;
 		this.color = color;
