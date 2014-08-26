@@ -27,6 +27,11 @@ public class Rational extends BasicGame {
 	Rect boxFrame = new Rect(Rational.getWidth()/2 - 500/2, 25, 500, 100);
 	TextBox tBox = new TextBox(boxFrame, "What? Where am I? Why is everything black?", Color.white);
 	
+	private static Rational INSTANCE = new Rational("Rational");
+	public static Rational getGame() {
+		return INSTANCE;
+	}
+	
 	public Rational(String title) {
 		super(title);
 	}

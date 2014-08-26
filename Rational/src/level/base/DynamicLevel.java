@@ -24,11 +24,8 @@ public abstract class DynamicLevel implements ILevel {
 	
 	@Override
 	public void init() throws SlickException {
-		System.out.println("Player?!");
 		player = new Player(5, 455, false);
-		System.out.println("hi");
-		bgObjList = new BgObjList();
-		System.out.println("Bye");
+		bgObjList = new BgObjList(true);
 	}
 
 	@Override

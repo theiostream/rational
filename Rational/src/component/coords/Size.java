@@ -1,7 +1,7 @@
 package component.coords;
 
 public class Size {
-	float width, height;
+	public float width, height;
 	
 	public Size(float width, float height) {
 		this.width = width;

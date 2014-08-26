@@ -10,7 +10,7 @@ public class Displayer {
 		System.setProperty("org.lwjgl.librarypath", new File(new File(System.getProperty("user.dir"), "native"), LWJGLUtil.getPlatformName()).getAbsolutePath());
 		
 		try {
-			AppGameContainer container = new AppGameContainer(new Rational("Rational"));
+			AppGameContainer container = new AppGameContainer(Rational.getGame());
 			container.setDisplayMode(Rational.getWidth(), Rational.getHeight(), false);
 			container.start();
 		} catch (Exception e) {

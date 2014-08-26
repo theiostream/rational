@@ -59,8 +59,8 @@ public abstract class Drawable implements IDrawable {
 	
 	@Override
 	public void update(int delta){
-		setX((getX() + (motionX * speed))* delta);
-		setY((getY() + (motionY * speed))* delta);
+		setX(getX() + (motionX * speed));
+		setY(getY() + (motionY * speed));
 	}
 
 	@Override

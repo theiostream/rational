@@ -13,11 +13,11 @@ public class LevelDivisor {
 	ArrayList<ILevel> levels = new ArrayList<ILevel>();
 	
 	//LEVELS!
-	TestLevel test = new TestLevel();
+	//TestLevel test = new TestLevel();
 	
 	public LevelDivisor() {
 		//ADD LEVELS TO LIST!
-		levels.add(test);
+		//levels.add(test);
 	}
 
 	public void updateLevel(int level, int delta){
