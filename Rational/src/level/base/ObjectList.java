@@ -12,20 +12,21 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
-import component.BgObj;
+import component.BackgroundObject;
+import component.Drawable;
 import component.coords.Point;
 import component.coords.Size;
 
 import entity.Player;
 import game.Rational;
 
-public class BgObjList {
+public class ObjectList {
 
 	private boolean check1 = false, check2 = false, check3 = false, check4 = false, check5 = false, check6 = false;
 	private boolean dynamic = true;
-	ArrayList<BgObj> bgObjs = new ArrayList<BgObj>();
+	ArrayList<Drawable> objects = new ArrayList<Drawable>();
 	
-	public BgObjList(boolean dyn) {
+	public ObjectList(boolean dyn) {
 		this.dynamic = dyn;
 	}
 	
@@ -49,8 +50,8 @@ public class BgObjList {
 				}
 			}
 			
-			for(int i = 0; i < bgObjs.size(); i++){
-				bgObjs.get(i).update(delta, player, check1, check2, check3, check4, check5, check6);
+			for(int i = 0; i < objects.size(); i++){
+				objects.get(i).update(delta, player, check1, check2, check3, check4, check5, check6);
 			}
 			
 			check1 = false;
@@ -63,83 +64,89 @@ public class BgObjList {
 	}
 	
 	public void draw(Graphics g){
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).draw(g); 
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).draw(g);
 		}
 	}
 	
 	public void moveLeft(){
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).moveLeft();;
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).moveLeft();;
 		}
 	}
 	
 	public void moveRight(){
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).moveRight();
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).moveRight();
 		}
 	}
 	
 	public void moveUp(){
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).moveUp();
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).moveUp();
 		}
 	}
 	
 	public void moveDown(){
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).moveDown();
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).moveDown();
 		}
 	}
 	
 	public void stopX(){
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).stopX();
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).stopX();
 		}
 	}
 	
 	public void stopY(){
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).stopY();
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).stopY();
 		}
 	}
 	
 	public void stop(){
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).stop();
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).stop();
 		}
 	}
 	
+	
+	
 	public void add(float x, float y, float width, float height, boolean fill){
-		bgObjs.add(new BgObj(x, y, width, height, fill));
+		objects.add(new BackgroundObject(x, y, width, height, fill));
 	}
 	
 	public void add(Point point, Size size, boolean fill){
-		bgObjs.add(new BgObj(point, size, fill));
+		objects.add(new BackgroundObject(point, size, fill));
 	}
 	
 	public void add(float x, float y, float width, float height, Color color, boolean fill){
-		bgObjs.add(new BgObj(x, y, width, height, color, fill));
+		objects.add(new BackgroundObject(x, y, width, height, color, fill));
 	}
 	
 	public void add(Point point, Size size, Color color, boolean fill){
-		bgObjs.add(new BgObj(point, size, color, fill));
+		objects.add(new BackgroundObject(point, size, color, fill));
 	}
 	
 	public void add(float x, float y, float width, float height, String texture){
-		bgObjs.add(new BgObj(x, y, width, height, Color.white, new Image(loadTexture(texture))));
+		objects.add(new BackgroundObject(x, y, width, height, Color.white, new Image(loadTexture(texture))));
 	}
 	
 	public void add(Point point, Size size, String texture){
-		bgObjs.add(new BgObj(point, size, Color.white, new Image(loadTexture(texture))));
+		objects.add(new BackgroundObject(point, size, Color.white, new Image(loadTexture(texture))));
 	}
 	
 	public void add(float x, float y, float width, float height, Color color, String texture){
-		bgObjs.add(new BgObj(x, y, width, height, color, new Image(loadTexture(texture))));
+		objects.add(new BackgroundObject(x, y, width, height, color, new Image(loadTexture(texture))));
 	}
 	
 	public void add(Point point, Size size, Color color, String texture){
-		bgObjs.add(new BgObj(point, size, color, new Image(loadTexture(texture))));
+		objects.add(new BackgroundObject(point, size, color, new Image(loadTexture(texture))));
+	}
+	
+	public void add(Drawable drawable) {
+		objects.add(drawable);
 	}
 	
 	private Texture loadTexture(String key){

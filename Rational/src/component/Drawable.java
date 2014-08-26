@@ -8,6 +8,7 @@ import org.newdawn.slick.Image;
 import component.coords.Point;
 import component.coords.Rect;
 import component.coords.Size;
+import entity.Player;
 
 public abstract class Drawable implements IDrawable {
 
@@ -16,6 +17,7 @@ public abstract class Drawable implements IDrawable {
 	private Color color;
 	private Image image;
 	private boolean fill;
+	private ObjectType type;
 	
 	public Drawable(float x, float y, float width, float height, float motionX, float motionY, float speed, Color color, Image image) {
 		this.rect = new Rect(new Point(x, y), new Size(width, height));
@@ -57,10 +59,58 @@ public abstract class Drawable implements IDrawable {
 		this.fill = fill;
 	}
 	
-	@Override
-	public void update(int delta){
+	public Drawable(Rect rect, float motionX, float motionY, Color color, boolean fill, Image image, ObjectType type) {
+		this.rect = rect;
+		this.motionX = motionX;
+		this.motionY = motionY;
+		this.color = color;
+		this.fill = fill;
+		this.image = image;
+		this.type = type;
+	}
+	
+	private void update_(int delta){
 		setX(getX() + (motionX * speed));
 		setY(getY() + (motionY * speed));
+	}
+	
+	@Override
+	public void update(int delta, Player player, boolean check1, boolean check2, boolean check3, boolean check4, boolean check5, boolean check6){
+		if (check1) {
+			moveLeft();
+			player.stopX();
+		}
+		else if(check2) {
+			moveRight();
+			player.stopX();
+		}
+		else if(check3) {
+			update_(delta);
+		}
+		
+		if (check4) {
+			moveUp();
+			player.stopY();
+		}
+		else if (check5) {
+			moveDown();
+			player.stopY();
+		}
+		else if (check6) {
+			update_(delta);
+		}
+		
+		if (this.getType() == ObjectType.FOREGROUND) {
+			if(player.intersectsUp(this) && player.getMotionY() == 1){
+				player.setMotionY(0);
+			}else if(player.intersectsDown(this) && player.getMotionY() == -1){
+				player.setMotionY(0);
+			}else if(player.intersectsLeft(this) && player.getMotionX() == 1){
+				player.setMotionX(0);
+			}else if(player.intersectsRight(this) && player.getMotionX() == -1){
+				player.setMotionX(0);
+			}
+		}
 	}
 
 	@Override
@@ -309,6 +359,14 @@ public abstract class Drawable implements IDrawable {
 	public void stop() {
 		this.stopX();
 		this.stopY();
+	}
+
+	public ObjectType getType() {
+		return type;
+	}
+
+	public void setType(ObjectType type) {
+		this.type = type;
 	}
 
 }

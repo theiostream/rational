@@ -1,5 +1,7 @@
 package component;
 
+import game.Rational;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.TrueTypeFont;
@@ -16,7 +18,7 @@ public class TextBox extends Drawable implements ITextBox {
 	private static int Y_OFFSET = 15;
 	
 	public TextBox(Rect rect, String text, Color color) {
-		super(new Point(rect.getX(), rect.getY()), new Size(rect.getWidth(), rect.getHeight()), 0, 0, 0, color, true);
+		super(new Point(rect.getX(), rect.getY()), new Size(rect.getWidth(), rect.getHeight()), 0, 0, 0, color, false);
 		this.rect = rect;
 		this.text = text;
 		this.color = color;
@@ -27,7 +29,9 @@ public class TextBox extends Drawable implements ITextBox {
 	}
 	
 	@Override
-	public void draw(Graphics g, TrueTypeFont f) {
+	public void draw(Graphics g) {
+		TrueTypeFont f = Rational.getGame().getGameFont();
+		
 		g.setColor(Color.white);
 		g.drawRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
 		float textX = rect.getX() + ((rect.getWidth()/2 - f.getWidth(text)/2));

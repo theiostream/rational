@@ -17,9 +17,7 @@ import font.Fonts;
 
 public class Rational extends BasicGame {
 	
-	@SuppressWarnings("unused")
-	private TrueTypeFont gameFont;
-	
+	protected TrueTypeFont gameFont;
 	private LevelDivisor lDivisor = new LevelDivisor();
 	
 	int level = 0;
@@ -85,6 +83,10 @@ public class Rational extends BasicGame {
 	public void setLevel(int level){
 		this.level = level;
 		lDivisor.initLevel(level);
+	}
+	
+	public TrueTypeFont getGameFont() {
+		return gameFont;
 	}
 	
 	public static int getWidth() {

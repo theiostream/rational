@@ -7,9 +7,9 @@ import org.newdawn.slick.Image;
 import component.coords.Point;
 import component.coords.Rect;
 import component.coords.Size;
+import entity.Player;
 
 public interface IDrawable {
-	public void update(int delta);
 	public void draw(Graphics g);
 	public void keyPressed(int key, char c);
 	public void keyReleased(int key, char c);
@@ -48,5 +48,7 @@ public interface IDrawable {
 	public void moveDown();
 	public void stopY();
 	public void stop();
+	void update(int delta, Player player, boolean check1, boolean check2,
+			boolean check3, boolean check4, boolean check5, boolean check6);
 	
 }

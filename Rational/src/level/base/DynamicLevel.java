@@ -8,14 +8,14 @@ import entity.Player;
 
 public abstract class DynamicLevel implements ILevel {
 	protected Player player;
-	protected BgObjList bgObjList;
+	protected ObjectList objectList;
 	
 	public Player getPlayer() {
 		return player;
 	}
 	
-	public BgObjList getObjList() {
-		return bgObjList;
+	public ObjectList getObjectList() {
+		return objectList;
 	}
 	
 	public DynamicLevel() {
@@ -25,19 +25,19 @@ public abstract class DynamicLevel implements ILevel {
 	@Override
 	public void init() throws SlickException {
 		player = new Player(5, 455, false);
-		bgObjList = new BgObjList(true);
+		objectList = new ObjectList(true);
 	}
 
 	@Override
 	public void update(int delta) throws SlickException {
 		player.update(delta);
-		bgObjList.update(delta, player, false);
+		objectList.update(delta, player, false);
 	}
 
 	@Override
 	public void draw(Graphics g) throws SlickException {
 		player.draw(g);
-		bgObjList.draw(g);
+		objectList.draw(g);
 	}
 	
 	public void keyPressed(int key, char c) {
@@ -48,16 +48,16 @@ public abstract class DynamicLevel implements ILevel {
 		player.keyReleased(key, c);
 		switch(key){
 		case Keyboard.KEY_LEFT:
-			bgObjList.stopX();
+			objectList.stopX();
 			break;
 		case Keyboard.KEY_RIGHT:
-			bgObjList.stopX();
+			objectList.stopX();
 			break;
 		case Keyboard.KEY_UP:
-			bgObjList.stopY();
+			objectList.stopY();
 			break;
 		case Keyboard.KEY_DOWN:
-			bgObjList.stopY();
+			objectList.stopY();
 			break;
 		}
 		

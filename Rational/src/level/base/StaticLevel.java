@@ -8,20 +8,20 @@ import game.Rational;
 
 public abstract class StaticLevel implements ILevel {
 	protected Player player;
-	protected BgObjList bgObjList;
+	protected ObjectList objectList;
 	
 	public Player getPlayer() {
 		return player;
 	}
 	
-	public BgObjList getObjList() {
-		return bgObjList;
+	public ObjectList getObjectList() {
+		return objectList;
 	}
 	
 	@Override
 	public void init() throws SlickException {
 		player = new Player(5, 455, false);
-		bgObjList = new BgObjList(false);
+		objectList = new ObjectList(false);
 	}
 
 	@Override
@@ -45,6 +45,7 @@ public abstract class StaticLevel implements ILevel {
 	@Override
 	public void draw(Graphics g) throws SlickException {
 		player.draw(g);
+		objectList.draw(g);
 	}
 	
 	public void keyPressed(int key, char c) {
