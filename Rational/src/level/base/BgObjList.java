@@ -22,40 +22,44 @@ import game.Rational;
 public class BgObjList {
 
 	private boolean check1 = false, check2 = false, check3 = false, check4 = false, check5 = false, check6 = false;
+	private boolean dynamic = true;
 	ArrayList<BgObj> bgObjs = new ArrayList<BgObj>();
 	
-	public BgObjList() {}
+	public BgObjList(boolean dyn) {
+		this.dynamic = dyn;
+	}
 	
 	public void update(int delta, Player player, boolean yScroll){
-		
-		if(player.getX() + player.getWidth() + 150 >= Rational.getWidth() && player.getMotionX() == 1){
-				check1 = true;
-			}else if(player.getX() <= 150 && player.getMotionX() == -1){
-				check2 = true;
-			}else{
-				check3 = true;
+		if (this.dynamic) {
+			if(player.getX() + player.getWidth() + 150 >= Rational.getWidth() && player.getMotionX() == 1){
+					check1 = true;
+				}else if(player.getX() <= 150 && player.getMotionX() == -1){
+					check2 = true;
+				}else{
+					check3 = true;
+				}
+				
+			if(yScroll){
+				if(player.getY() + player.getHeight() + 150 >= Rational.getHeight() && player.getMotionY() == 1){
+					check4 = true;
+				}else if(player.getY() <= 150 && player.getMotionY() == -1){
+					check5 = true;
+				}else{
+					check6 = true;
+				}
 			}
 			
-		if(yScroll){
-			if(player.getY() + player.getHeight() + 150 >= Rational.getHeight() && player.getMotionY() == 1){
-				check4 = true;
-			}else if(player.getY() <= 150 && player.getMotionY() == -1){
-				check5 = true;
-			}else{
-				check6 = true;
+			for(int i = 0; i < bgObjs.size(); i++){
+				bgObjs.get(i).update(delta, player, check1, check2, check3, check4, check5, check6);
 			}
+			
+			check1 = false;
+			check2 = false;
+			check3 = false;
+			check4 = false;
+			check5 = false;
+			check6 = false;
 		}
-		
-		for(int i = 0; i < bgObjs.size(); i++){
-			bgObjs.get(i).update(delta, player, check1, check2, check3, check4, check5, check6);
-		}
-		
-		check1 = false;
-		check2 = false;
-		check3 = false;
-		check4 = false;
-		check5 = false;
-		check6 = false;
 	}
 	
 	public void draw(Graphics g){
