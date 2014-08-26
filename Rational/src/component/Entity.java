@@ -9,8 +9,7 @@ import component.coords.Size;
 
 public abstract class Entity extends Drawable implements IEntity {
 
-	protected boolean isAlive;
-	protected float health, baseDmg, dmg, dmgIncr;
+	private float health, baseDmg, dmg, dmgIncr;
 	
 	public Entity(float x, float y, float width, float height, float health, float baseDmg){
 		super(new Point(x, y), new Size(width, height), 0f, 0f, 1f, Color.white, true);
@@ -186,16 +185,6 @@ public abstract class Entity extends Drawable implements IEntity {
 	@Override
 	public float getDamage(){
 		return this.baseDmg + this.dmgIncr;
-	}
-	
-	@Override
-	public float getMotionX(){
-		return super.motionX;
-	}
-	
-	@Override
-	public float getMotionY(){
-		return super.motionY;
 	}
 	
 	@Override

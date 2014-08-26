@@ -11,11 +11,11 @@ import component.coords.Size;
 
 public abstract class Drawable implements IDrawable {
 
-	protected Rect rect;
-	protected float motionX, motionY, speed;
-	protected Color color;
-	protected Image image;
-	protected boolean fill;
+	private Rect rect;
+	private float motionX, motionY, speed;
+	private Color color;
+	private Image image;
+	private boolean fill;
 	
 	public Drawable(float x, float y, float width, float height, float motionX, float motionY, float speed, Color color, Image image) {
 		this.rect = new Rect(new Point(x, y), new Size(width, height));
@@ -118,8 +118,39 @@ public abstract class Drawable implements IDrawable {
 	}
 
 	@Override
-	public void intersects(Drawable drawable) {
-
+	public boolean intersectsUp(Drawable drawable) {
+		if(drawable.getY() + drawable.getHeight() >= getY()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean intersectsDown(Drawable drawable) {
+		if(getY() + getHeight() >= drawable.getY()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean intersectsLeft(Drawable drawable) {
+		if(drawable.getX() + drawable.getWidth() >= getX()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean intersectsRight(Drawable drawable) {
+		if(getX() + getWidth() >= drawable.getX()){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	@Override
@@ -130,6 +161,16 @@ public abstract class Drawable implements IDrawable {
 	@Override
 	public float getY() {
 		return rect.getY();
+	}
+	
+	@Override
+	public float getMotionX() {
+		return motionX;
+	}
+
+	@Override
+	public float getMotionY() {
+		return motionY;
 	}
 
 	@Override
@@ -154,7 +195,7 @@ public abstract class Drawable implements IDrawable {
 
 	@Override
 	public Rect getRect() {
-		return this.rect;
+		return rect;
 	}
 	
 	@Override
@@ -175,7 +216,16 @@ public abstract class Drawable implements IDrawable {
 	@Override
 	public void setY(float y) {
 		rect.setY(y);
+	}
+	
+	@Override
+	public void setMotionX(float motionX) {
+		this.motionX = motionX;
+	}
 
+	@Override
+	public void setMotionY(float motionY) {
+		this.motionY = motionY;
 	}
 
 	@Override

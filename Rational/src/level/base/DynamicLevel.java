@@ -7,8 +7,8 @@ import org.newdawn.slick.SlickException;
 import entity.Player;
 
 public abstract class DynamicLevel implements ILevel {
-	private Player player;
-	private BgObjList bgObjList;
+	protected Player player;
+	protected BgObjList bgObjList;
 	
 	public Player getPlayer() {
 		return player;

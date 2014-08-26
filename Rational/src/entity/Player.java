@@ -123,9 +123,9 @@ public class Player extends Entity implements IEntity {
 	
 	@Override
 	public void update(int delta){
-		setX(getX() + motionX);
+		setX(getX() + getMotionX());
 		if(yMove){
-			setY(getY() + motionY);
+			setY(getY() + getMotionY());
 		}
 	}
 	
