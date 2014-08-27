@@ -1,5 +1,7 @@
 package component;
-
+/*
+ * FINISH THAT AWESOME type THINGY
+ */
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
@@ -7,6 +9,7 @@ import component.coords.Point;
 import component.coords.Size;
 
 public class ForegroundObject extends Drawable implements IDrawable {
+	
 	public ForegroundObject(float x, float y, float width, float height, boolean fill){
 		super(new Point(x, y), new Size(width, height), 0f, 0f, 1f, Color.white, fill);
 	}

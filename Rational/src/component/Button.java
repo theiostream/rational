@@ -1,5 +1,7 @@
 package component;
-
+/*
+ * WIP, plz help! :P
+ */
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 

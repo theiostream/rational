@@ -6,6 +6,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.SlickException;
 
 public class FirstLevel extends StaticLevel {
+	
 	@Override
 	public void init() throws SlickException {
 		super.init();
