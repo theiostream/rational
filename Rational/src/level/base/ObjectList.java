@@ -13,7 +13,10 @@ import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
 import component.BackgroundObject;
+import component.Button;
 import component.Drawable;
+import component.ForegroundObject;
+import component.TextBox;
 import component.coords.Point;
 import component.coords.Size;
 
@@ -24,6 +27,7 @@ public class ObjectList {
 
 	private boolean check1 = false, check2 = false, check3 = false, check4 = false, check5 = false, check6 = false;
 	private boolean dynamic = true;
+	
 	ArrayList<Drawable> objects = new ArrayList<Drawable>();
 	
 	public ObjectList(boolean dyn) {
@@ -69,6 +73,36 @@ public class ObjectList {
 		}
 	}
 	
+	public void keyPressed(int key, char c){
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).keyPressed(key, c);
+		}
+	}
+	
+	public void keyReleased(int key, char c){
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).keyReleased(key, c);
+		}
+	}
+	
+	public void mouseMoved(int oldx, int oldy, int newx, int newy){
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).mouseMoved(oldx, oldy, newx, newy);
+		}
+	}
+	
+	public void mousePressed(int button, int x, int y){
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).mousePressed(button, x, y);
+		}
+	}
+	
+	public void mouseReleased(int button, int x, int y){
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).mouseReleased(button, x, y);
+		}
+	}
+	
 	public void moveLeft(){
 		for(int i = 0; i < objects.size(); i++){
 			objects.get(i).moveLeft();;
@@ -111,38 +145,108 @@ public class ObjectList {
 		}
 	}
 	
-	
-	
-	public void add(float x, float y, float width, float height, boolean fill){
+	public void addBgObj(float x, float y, float width, float height, boolean fill){
 		objects.add(new BackgroundObject(x, y, width, height, fill));
 	}
 	
-	public void add(Point point, Size size, boolean fill){
+	public void addBgObj(Point point, Size size, boolean fill){
 		objects.add(new BackgroundObject(point, size, fill));
 	}
 	
-	public void add(float x, float y, float width, float height, Color color, boolean fill){
+	public void addBgObj(float x, float y, float width, float height, Color color, boolean fill){
 		objects.add(new BackgroundObject(x, y, width, height, color, fill));
 	}
 	
-	public void add(Point point, Size size, Color color, boolean fill){
+	public void addBgObj(Point point, Size size, Color color, boolean fill){
 		objects.add(new BackgroundObject(point, size, color, fill));
 	}
 	
-	public void add(float x, float y, float width, float height, String texture){
+	public void addBgObj(float x, float y, float width, float height, String texture){
 		objects.add(new BackgroundObject(x, y, width, height, Color.white, new Image(loadTexture(texture))));
 	}
 	
-	public void add(Point point, Size size, String texture){
+	public void addBgObj(Point point, Size size, String texture){
 		objects.add(new BackgroundObject(point, size, Color.white, new Image(loadTexture(texture))));
 	}
 	
-	public void add(float x, float y, float width, float height, Color color, String texture){
+	public void addBgObj(float x, float y, float width, float height, Color color, String texture){
 		objects.add(new BackgroundObject(x, y, width, height, color, new Image(loadTexture(texture))));
 	}
 	
-	public void add(Point point, Size size, Color color, String texture){
+	public void addBgObj(Point point, Size size, Color color, String texture){
 		objects.add(new BackgroundObject(point, size, color, new Image(loadTexture(texture))));
+	}
+	
+	public void addFgObj(float x, float y, float width, float height, boolean fill){
+		objects.add(new ForegroundObject(x, y, width, height, fill));
+	}
+	
+	public void addFgObj(Point point, Size size, boolean fill){
+		objects.add(new ForegroundObject(point, size, fill));
+	}
+	
+	public void addFgObj(float x, float y, float width, float height, Color color, boolean fill){
+		objects.add(new ForegroundObject(x, y, width, height, color, fill));
+	}
+	
+	public void addFgObj(Point point, Size size, Color color, boolean fill){
+		objects.add(new ForegroundObject(point, size, color, fill));
+	}
+	
+	public void addFgObj(float x, float y, float width, float height, String texture){
+		objects.add(new ForegroundObject(x, y, width, height, Color.white, new Image(loadTexture(texture))));
+	}
+	
+	public void addFgObj(Point point, Size size, String texture){
+		objects.add(new ForegroundObject(point, size, Color.white, new Image(loadTexture(texture))));
+	}
+	
+	public void addFgObj(float x, float y, float width, float height, Color color, String texture){
+		objects.add(new ForegroundObject(x, y, width, height, color, new Image(loadTexture(texture))));
+	}
+	
+	public void addFgObj(Point point, Size size, Color color, String texture){
+		objects.add(new ForegroundObject(point, size, color, new Image(loadTexture(texture))));
+	}
+	
+	public void addTextBox(float x, float y, float width, float height, String text){
+		objects.add(new TextBox(x, y, width, height, text));
+	}
+	
+	public void addTextBox(Point point, Size size, String text){
+		objects.add(new TextBox(point, size, text));
+	}
+	
+	public void addTextBox(float x, float y, float width, float height, Color color, String text){
+		objects.add(new TextBox(x, y, width, height, text, color));
+	}
+	
+	public void addTextBox(Point point, Size size, Color color, String text){
+		objects.add(new TextBox(point, size, color, text));
+	}
+	
+	public void addTextBox(float x, float y, float width, float height, String texture, String text){
+		objects.add(new TextBox(x, y, width, height, new Image(loadTexture(texture)), text));
+	}
+	
+	public void addTextBox(Point point, Size size, Color color, String texture, String text){
+		objects.add(new TextBox(point, size, new Image(loadTexture(texture)), text));
+	}
+	
+	public void addButton(float x, float y, float width, float height, Color color, String function, String text){
+		objects.add(new Button(x, y, width, height, color, function, text));
+	}
+	
+	public void addButtonx(Point point, Size size, Color color, String texture, String function, String text){
+		objects.add(new Button(point, size, new Image(loadTexture(texture)), function, text));
+	}
+	
+	public void addButton(Point point, Size size, String texture, String function, String text){
+		objects.add(new Button(point, size, new Image(loadTexture(texture)), function, text));
+	}
+	
+	public void addButtonx(float x, float y, float width, float height, Color color, String function, String text){
+		objects.add(new Button(x, y, width, height, color, function, text));
 	}
 	
 	public void add(Drawable drawable) {

@@ -18,9 +18,7 @@ public abstract class DynamicLevel implements ILevel {
 		return objectList;
 	}
 	
-	public DynamicLevel() {
-		
-	}
+	public DynamicLevel() {}
 	
 	@Override
 	public void init() throws SlickException {
@@ -40,10 +38,12 @@ public abstract class DynamicLevel implements ILevel {
 		objectList.draw(g);
 	}
 	
+	@Override
 	public void keyPressed(int key, char c) {
 		player.keyPressed(key, c);
 	}
 	
+	@Override
 	public void keyReleased(int key, char c) {
 		player.keyReleased(key, c);
 		switch(key){
@@ -62,4 +62,13 @@ public abstract class DynamicLevel implements ILevel {
 		}
 		
 	}
+	
+	@Override
+	public void mouseMoved(int oldx, int oldy, int newx, int newy){}
+	
+	@Override
+	public void mousePressed(int button, int x, int y){}
+	
+	@Override
+	public void mouseReleased(int button, int x, int y){}
 }

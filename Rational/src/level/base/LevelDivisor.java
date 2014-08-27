@@ -73,4 +73,28 @@ public class LevelDivisor {
 			}
 		}
 	}
+	
+	public void mouseMovedLevel(int level, int oldx, int oldy, int newx, int newy){
+		for(int i = 0; i < levels.size(); i++){
+			if(level == i){
+				levels.get(i).mouseMoved(oldx, oldy, newx, newy);
+			}
+		}
+	}
+	
+	public void mousePressedLevel(int level, int button, int x, int y){
+		for(int i = 0; i < levels.size(); i++){
+			if(level == i){
+				levels.get(i).mousePressed(button, x, y);
+			}
+		}
+	}
+	
+	public void mouseReleasedLevel(int level, int button, int x, int y){
+		for(int i = 0; i < levels.size(); i++){
+			if(level == i){
+				levels.get(i).mouseReleased(button, x, y);
+			}
+		}
+	}
 }

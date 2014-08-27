@@ -13,6 +13,9 @@ public interface IDrawable {
 	public void draw(Graphics g);
 	public void keyPressed(int key, char c);
 	public void keyReleased(int key, char c);
+	public void mouseMoved(int oldx, int oldy, int newx, int newy);
+	public void mousePressed(int button, int x, int y);
+	public void mouseReleased(int button, int x, int y);
 	public boolean intersectsUp(Drawable drawable);
 	public boolean intersectsDown(Drawable drawable);
 	public boolean intersectsLeft(Drawable drawable);

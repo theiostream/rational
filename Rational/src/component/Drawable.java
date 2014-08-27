@@ -166,6 +166,15 @@ public abstract class Drawable implements IDrawable {
 			break;
 		}
 	}
+	
+	@Override
+	public void mouseMoved(int oldx, int oldy, int newx, int newy){}
+	
+	@Override
+	public void mousePressed(int button, int x, int y){}
+	
+	@Override
+	public void mouseReleased(int button, int x, int y){}
 
 	@Override
 	public boolean intersectsUp(Drawable drawable) {

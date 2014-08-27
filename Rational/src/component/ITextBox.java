@@ -2,7 +2,6 @@ package component;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.TrueTypeFont;
 
 import component.coords.Rect;
 

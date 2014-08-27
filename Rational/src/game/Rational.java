@@ -26,7 +26,9 @@ public class Rational extends BasicGame {
 	TextBox tBox = new TextBox(boxFrame, "What? Where am I? Why is everything black?", Color.white);
 	
 	private static Rational INSTANCE = new Rational("Rational");
+	
 	public static Rational getGame() {
+		
 		return INSTANCE;
 	}
 	
@@ -74,6 +76,18 @@ public class Rational extends BasicGame {
 	
 	public void keyReleased(int key, char c) {
 		lDivisor.keyReleasedLevel(level, key, c);
+	}
+	
+	public void mouseMoved(int oldx, int oldy, int newx, int newy){
+		
+	}
+	
+	public void mousePressed(int button, int x, int y){
+		
+	}
+	
+	public void mouseReleased(int button, int x, int y){
+		
 	}
 	
 	public int getLevel(){
