@@ -5,6 +5,11 @@ import level.base.StaticLevel;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.SlickException;
 
+import component.Button;
+import component.ObjectType;
+import component.TextBox;
+import component.coords.Rect;
+
 public class FirstLevel extends StaticLevel {
 	
 	@Override
@@ -12,7 +17,7 @@ public class FirstLevel extends StaticLevel {
 		super.init();
 		
 		objectList.addBgObj(300f, 50f, 50f, 500f, Color.white, true);
-		objectList.addTextBox(50, 50, 300, 50, Color.blue, "Bozo");
-		objectList.addButton(150, 450, 300, 50, Color.cyan, "test", "test");
+		objectList.add(new TextBox(new Rect(50, 50, 300, 50), "Bozo", Color.white, ObjectType.BACKGROUND));
+		objectList.add(new Button(new Rect(150, 450, 300, 50), "test", Color.cyan, ObjectType.BACKGROUND));
 	}
 }

@@ -1,20 +1,12 @@
 package component;
-/*
- * WIP, plz help! :P
- */
+import game.Rational;
+
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Image;
 
-import component.coords.Point;
 import component.coords.Rect;
-import component.coords.Size;
 
-public class Button extends TextBox {
-	
-	private boolean isButtonRightClicked = false, isButtonLeftClicked = false, isButtonMiddleClicked = false;
-	private String function;
-	
-	public Button(float x, float y, float width, float height, String function, String text, Color color) {
+public class Button extends TextBox {	
+	/*public Button(float x, float y, float width, float height, String function, String text, Color color) {
 		super(new Rect(new Point(x, y), new Size(width, height)), text, color);
 		this.function = function;
 	}
@@ -47,34 +39,26 @@ public class Button extends TextBox {
 	public Button(float x, float y, float width, float height, Color color, String function, String text) {
 		super(new Rect(new Point(x, y), new Size(width, height)), text, color);
 		this.function = function;
+	}*/
+	
+	public Button(Rect rect, String text, Color color, ObjectType type) {
+		super(rect, text, color, type);
+	}
+	
+	@Override
+	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
+		
 	}
 	
 	@Override
 	public void mousePressed(int button, int x, int y){
-		if(x >= getX() && x <= getX() + getWidth() && y >= getY() && y <= getY() + getHeight()){
-			switch(button){
-			case 0:
-				System.out.println(0);
-			case 1:
-				System.out.println(1);
-			case 2:
-				System.out.println(2);
-			}
-		}
+		System.out.println("PRESSED!");
+		Rational.getGame().getCurrentLevel().getObjectList().add(new TextBox(new Rect(200, 200, 100, 100), "Bozo2", Color.red, ObjectType.FOREGROUND));
 	}
 	
 	@Override
 	public void mouseReleased(int button, int x, int y){
-		if(x >= getX() && x <= getX() + getWidth() && y >= getY() && y <= getY() + getHeight()){
-			switch(button){
-			case 0:
-				System.out.println(0);
-			case 1:
-				System.out.println(1);
-			case 2:
-				System.out.println(2);
-			}
-		}
+		
 	}
 	
 	@Override

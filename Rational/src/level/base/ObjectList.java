@@ -13,10 +13,8 @@ import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
 import component.BackgroundObject;
-import component.Button;
 import component.Drawable;
 import component.ForegroundObject;
-import component.TextBox;
 import component.coords.Point;
 import component.coords.Size;
 
@@ -26,49 +24,46 @@ import game.Rational;
 public class ObjectList {
 
 	private boolean check1 = false, check2 = false, check3 = false, check4 = false, check5 = false, check6 = false;
-	private boolean dynamic = true;
 	
 	ArrayList<Drawable> objects = new ArrayList<Drawable>();
 	
-	public ObjectList(boolean dyn) {
-		this.dynamic = dyn;
-	}
+	public ObjectList() {}
 	
 	public void update(int delta, Player player, boolean yScroll){
-		if (this.dynamic) {
-			if(player.getX() + player.getWidth() + 150 >= Rational.getWidth() && player.getMotionX() == 1){
-					check1 = true;
-				}else if(player.getX() <= 150 && player.getMotionX() == -1){
-					check2 = true;
-				}else{
-					check3 = true;
-				}
-				
-			if(yScroll){
-				if(player.getY() + player.getHeight() + 150 >= Rational.getHeight() && player.getMotionY() == 1){
-					check4 = true;
-				}else if(player.getY() <= 150 && player.getMotionY() == -1){
-					check5 = true;
-				}else{
-					check6 = true;
-				}
-			}
-			
-			for(int i = 0; i < objects.size(); i++){
-				objects.get(i).update(delta, player, check1, check2, check3, check4, check5, check6);
-			}
-			
-			check1 = false;
-			check2 = false;
-			check3 = false;
-			check4 = false;
-			check5 = false;
-			check6 = false;
+		if (player.getX() + player.getWidth() + 150 >= Rational.getWidth() && player.getMotionX() == 1){
+			check1 = true;
 		}
+		else if(player.getX() <= 150 && player.getMotionX() == -1){
+			check2 = true;
+		}
+		else{
+			check3 = true;
+		}
+			
+		if(yScroll){
+			if(player.getY() + player.getHeight() + 150 >= Rational.getHeight() && player.getMotionY() == 1){
+				check4 = true;
+			}else if(player.getY() <= 150 && player.getMotionY() == -1){
+				check5 = true;
+			}else{
+				check6 = true;
+			}
+		}
+		
+		for(int i = 0; i < objects.size(); i++){
+			objects.get(i).update(delta, player, check1, check2, check3, check4, check5, check6);
+		}
+		
+		check1 = false;
+		check2 = false;
+		check3 = false;
+		check4 = false;
+		check5 = false;
+		check6 = false;
 	}
 	
 	public void draw(Graphics g){
-		for(int i = 0; i < objects.size(); i++){
+		for (int i = 0; i < objects.size(); i++){
 			objects.get(i).draw(g);
 		}
 	}
@@ -87,25 +82,35 @@ public class ObjectList {
 	
 	public void mouseMoved(int oldx, int oldy, int newx, int newy){
 		for(int i = 0; i < objects.size(); i++){
-			objects.get(i).mouseMoved(oldx, oldy, newx, newy);
+			Drawable object = objects.get(i);
+			if (object.getRect().isWithinPoint(new Point(newx, newy)))
+				object.mouseMoved(oldx, oldy, newx, newy);
 		}
 	}
 	
 	public void mousePressed(int button, int x, int y){
 		for(int i = 0; i < objects.size(); i++){
-			objects.get(i).mousePressed(button, x, y);
+			System.out.println("Mouse Pressed: Doing stuff");
+			
+			Drawable object = objects.get(i);
+			if (object.getRect().isWithinPoint(new Point(x, y))) {
+				System.out.println("Within?");
+				object.mousePressed(button, x, y);
+			}
 		}
 	}
 	
 	public void mouseReleased(int button, int x, int y){
 		for(int i = 0; i < objects.size(); i++){
-			objects.get(i).mouseReleased(button, x, y);
+			Drawable object = objects.get(i);
+			if (object.getRect().isWithinPoint(new Point(x, y)))
+				object.mouseReleased(button, x, y);
 		}
 	}
 	
 	public void moveLeft(){
 		for(int i = 0; i < objects.size(); i++){
-			objects.get(i).moveLeft();;
+			objects.get(i).moveLeft();
 		}
 	}
 	
@@ -209,7 +214,7 @@ public class ObjectList {
 		objects.add(new ForegroundObject(point, size, color, new Image(loadTexture(texture))));
 	}
 	
-	public void addTextBox(float x, float y, float width, float height, String text){
+	/*public void addTextBox(float x, float y, float width, float height, String text){
 		objects.add(new TextBox(x, y, width, height, text));
 	}
 	
@@ -231,9 +236,9 @@ public class ObjectList {
 	
 	public void addTextBox(Point point, Size size, Color color, String texture, String text){
 		objects.add(new TextBox(point, size, new Image(loadTexture(texture)), text));
-	}
+	}*/
 	
-	public void addButton(float x, float y, float width, float height, Color color, String function, String text){
+	/*public void addButton(float x, float y, float width, float height, Color color, String function, String text){
 		objects.add(new Button(x, y, width, height, color, function, text));
 	}
 	
@@ -247,7 +252,7 @@ public class ObjectList {
 	
 	public void addButtonx(float x, float y, float width, float height, Color color, String function, String text){
 		objects.add(new Button(x, y, width, height, color, function, text));
-	}
+	}*/
 	
 	public void add(Drawable drawable) {
 		objects.add(drawable);

@@ -11,10 +11,12 @@ public abstract class StaticLevel implements ILevel {
 	protected Player player;
 	protected ObjectList objectList;
 	
+	@Override
 	public Player getPlayer() {
 		return player;
 	}
 	
+	@Override
 	public ObjectList getObjectList() {
 		return objectList;
 	}
@@ -22,9 +24,10 @@ public abstract class StaticLevel implements ILevel {
 	@Override
 	public void init() throws SlickException {
 		player = new Player(5, 455, false);
-		objectList = new ObjectList(false);
+		objectList = new ObjectList();
 	}
 
+	// It's very important that ObjectList /doesn't/ get update()d here.
 	@Override
 	public void update(int delta) throws SlickException {
 		player.update(delta);
@@ -66,6 +69,7 @@ public abstract class StaticLevel implements ILevel {
 	
 	@Override
 	public void mousePressed(int button, int x, int y){
+		System.out.println("Mouse Pressed?");
 		objectList.mousePressed(button, x, y);
 	}
 	

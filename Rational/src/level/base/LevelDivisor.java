@@ -97,4 +97,8 @@ public class LevelDivisor {
 			}
 		}
 	}
+	
+	public ILevel getLevel(int level) {
+		return levels.get(level);
+	}
 }

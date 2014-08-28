@@ -59,10 +59,11 @@ public abstract class Drawable implements IDrawable {
 		this.fill = fill;
 	}
 	
-	public Drawable(Rect rect, float motionX, float motionY, Color color, boolean fill, Image image, ObjectType type) {
+	public Drawable(Rect rect, float motionX, float motionY, float speed, Color color, boolean fill, Image image, ObjectType type) {
 		this.rect = rect;
 		this.motionX = motionX;
 		this.motionY = motionY;
+		this.speed = speed;
 		this.color = color;
 		this.fill = fill;
 		this.image = image;
@@ -214,12 +215,12 @@ public abstract class Drawable implements IDrawable {
 
 	@Override
 	public float getX() {
-		return rect.getX();
+		return rect.origin.x;
 	}
 
 	@Override
 	public float getY() {
-		return rect.getY();
+		return rect.origin.y;
 	}
 	
 	@Override
@@ -239,12 +240,12 @@ public abstract class Drawable implements IDrawable {
 
 	@Override
 	public float getWidth() {
-		return rect.getWidth();
+		return rect.size.width;
 	}
 
 	@Override
 	public float getHeight() {
-		return rect.getHeight();
+		return rect.size.height;
 	}
 
 	@Override
@@ -269,12 +270,12 @@ public abstract class Drawable implements IDrawable {
 
 	@Override
 	public void setX(float x) {
-		rect.setX(x);
+		rect.origin.x = x;
 	}
 
 	@Override
 	public void setY(float y) {
-		rect.setY(y);
+		rect.origin.y = y;
 	}
 	
 	@Override
@@ -295,12 +296,12 @@ public abstract class Drawable implements IDrawable {
 
 	@Override
 	public void setWidth(float width) {
-		rect.setWidth(width);
+		rect.size.width = width;
 	}
 
 	@Override
 	public void setHeight(float height) {
-		rect.setHeight(height);
+		rect.size.height = height;
 	}
 
 	@Override

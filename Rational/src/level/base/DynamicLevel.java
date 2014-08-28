@@ -10,10 +10,12 @@ public abstract class DynamicLevel implements ILevel {
 	protected Player player;
 	protected ObjectList objectList;
 	
+	@Override
 	public Player getPlayer() {
 		return player;
 	}
 	
+	@Override
 	public ObjectList getObjectList() {
 		return objectList;
 	}
@@ -23,7 +25,7 @@ public abstract class DynamicLevel implements ILevel {
 	@Override
 	public void init() throws SlickException {
 		player = new Player(5, 455, false);
-		objectList = new ObjectList(true);
+		objectList = new ObjectList();
 	}
 
 	@Override

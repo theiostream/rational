@@ -1,16 +1,15 @@
 package game;
 
+import level.base.ILevel;
 import level.base.LevelDivisor;
 
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 
-import component.TextBox;
 import component.coords.Rect;
 
 import font.Fonts;
@@ -23,7 +22,6 @@ public class Rational extends BasicGame {
 	int level = 0;
 	
 	Rect boxFrame = new Rect(Rational.getWidth()/2 - 500/2, 25, 500, 100);
-	TextBox tBox = new TextBox(boxFrame, "What? Where am I? Why is everything black?", Color.white);
 	
 	private static Rational INSTANCE = new Rational("Rational");
 	
@@ -79,22 +77,26 @@ public class Rational extends BasicGame {
 	}
 	
 	public void mouseMoved(int oldx, int oldy, int newx, int newy){
-		
+		lDivisor.mouseMovedLevel(level, oldx, oldy, newx, newy);
 	}
 	
 	public void mousePressed(int button, int x, int y){
-		
+		lDivisor.mousePressedLevel(level, button, x, y);
 	}
 	
 	public void mouseReleased(int button, int x, int y){
-		
+		lDivisor.mouseReleasedLevel(level, button, x, y);
 	}
 	
-	public int getLevel(){
+	public ILevel getCurrentLevel(){
+		return lDivisor.getLevel(level);
+	}
+	
+	public int getLevelNumber() {
 		return level;
 	}
 	
-	public void setLevel(int level){
+	public void setLevelNumber(int level){
 		this.level = level;
 		lDivisor.initLevel(level);
 	}
