@@ -62,8 +62,8 @@ public class Button extends TextBox {
 	}
 	
 	@Override
-	public void update(int delta){
-		
+	public ObjectType getType() {
+		return ObjectType.BUTTON;
 	}
 
 }

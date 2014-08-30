@@ -43,5 +43,10 @@ public class TextBox extends Drawable implements ITextBox {
 	public String getText(){
 		return text;
 	}
+	
+	@Override
+	public ObjectType getType() {
+		return ObjectType.TEXTBOX;
+	}
 
 }

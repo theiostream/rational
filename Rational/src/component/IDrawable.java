@@ -27,6 +27,7 @@ public interface IDrawable {
 	public float getHeight();
 	public float getMotionX();
 	public float getMotionY();
+	public ObjectType getType();
 	public Size getSize();
 	public Rect getRect();
 	public Color getColor();

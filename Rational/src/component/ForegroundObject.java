@@ -89,4 +89,10 @@ public class ForegroundObject extends Drawable implements IDrawable {
 	public ForegroundObject(Point point, Size size, float red, float green, float blue, Image image, float speed, boolean fill){
 		super(point, size, 0f, 0f, speed, new Color(red, green, blue), image);
 	}
+	
+	@Override
+	public ObjectType getType() {
+		return ObjectType.FOREGROUND;
+	}
+	
 }

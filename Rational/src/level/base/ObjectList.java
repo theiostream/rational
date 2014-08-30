@@ -15,6 +15,7 @@ import org.newdawn.slick.opengl.TextureLoader;
 import component.BackgroundObject;
 import component.Drawable;
 import component.ForegroundObject;
+import component.ObjectType;
 import component.coords.Point;
 import component.coords.Size;
 
@@ -106,6 +107,19 @@ public class ObjectList {
 			if (object.getRect().isWithinPoint(new Point(x, y)))
 				object.mouseReleased(button, x, y);
 		}
+	}
+	
+	public ObjectList getDrawableList(ObjectType type){
+		ObjectList list = new  ObjectList();
+		
+		for(int i = 0; i < objects.size(); i++){
+			if(objects.get(i).getType() == type){
+				list.add(objects.get(i));
+				objects.remove(i);
+			}
+		}
+		
+		return list;
 	}
 	
 	public void moveLeft(){
@@ -242,7 +256,7 @@ public class ObjectList {
 		objects.add(new Button(x, y, width, height, color, function, text));
 	}
 	
-	public void addButtonx(Point point, Size size, Color color, String texture, String function, String text){
+	public void addButton(Point point, Size size, Color color, String texture, String function, String text){
 		objects.add(new Button(point, size, new Image(loadTexture(texture)), function, text));
 	}
 	
@@ -250,7 +264,7 @@ public class ObjectList {
 		objects.add(new Button(point, size, new Image(loadTexture(texture)), function, text));
 	}
 	
-	public void addButtonx(float x, float y, float width, float height, Color color, String function, String text){
+	public void addButton(float x, float y, float width, float height, Color color, String function, String text){
 		objects.add(new Button(x, y, width, height, color, function, text));
 	}*/
 	

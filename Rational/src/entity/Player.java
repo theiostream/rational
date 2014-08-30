@@ -7,6 +7,7 @@ import org.newdawn.slick.Image;
 
 import component.Entity;
 import component.IEntity;
+import component.ObjectType;
 import component.coords.Point;
 import component.coords.Size;
 
@@ -167,5 +168,10 @@ public class Player extends Entity implements IEntity {
 			this.stopY();
 			break;
 		}
+	}
+
+	@Override
+	public ObjectType getType() {
+		return ObjectType.PLAYER;
 	}
 }

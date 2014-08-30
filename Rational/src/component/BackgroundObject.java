@@ -7,6 +7,7 @@ import component.coords.Point;
 import component.coords.Size;
 
 public class BackgroundObject extends Drawable implements IDrawable {
+	
 	public BackgroundObject(float x, float y, float width, float height, boolean fill){
 		super(new Point(x, y), new Size(width, height), 0f, 0f, 1f, Color.white, fill);
 	}
@@ -88,5 +89,10 @@ public class BackgroundObject extends Drawable implements IDrawable {
 	}
 	public BackgroundObject(Point point, Size size, float motionX, float motionY, float speed, Color color, boolean fill){
 		super(point, size, motionX, motionY, speed, color, fill);
+	}
+
+	@Override
+	public ObjectType getType() {
+		return ObjectType.BACKGROUND;
 	}
 }

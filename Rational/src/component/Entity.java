@@ -225,4 +225,10 @@ public abstract class Entity extends Drawable implements IEntity {
 			return true;
 		}
 	}
+	
+	@Override
+	public ObjectType getType() {
+		return ObjectType.ENTITY;
+	}
+
 }

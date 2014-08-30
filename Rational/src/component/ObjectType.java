@@ -1,5 +1,5 @@
 package component;
 
 public enum ObjectType {
-	BACKGROUND, FOREGROUND
+	BACKGROUND, FOREGROUND, PLAYER, ENTITY, BUTTON, TEXTBOX, ENEMY
 }
