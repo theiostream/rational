@@ -7,8 +7,11 @@ import org.newdawn.slick.Image;
 import component.coords.Point;
 import component.coords.Size;
 
+import entity.Gravity;
+
 public abstract class Entity extends Drawable implements IEntity {
 
+	private Gravity gravity = new Gravity();
 	private float health, baseDmg, dmg, dmgIncr;
 	
 	public Entity(float x, float y, float width, float height, float health, float baseDmg){
@@ -129,6 +132,11 @@ public abstract class Entity extends Drawable implements IEntity {
 		super(point, size, 0f, 0f, speed, new Color(red, green, blue), image);
 		this.health = health;
 		this.baseDmg = baseDmg;
+	}
+	
+	@Override
+	public void update(int delta){
+		gravity.update(delta, this, 0.5f);
 	}
 
 	@Override

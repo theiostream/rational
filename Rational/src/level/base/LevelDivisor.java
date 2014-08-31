@@ -1,9 +1,9 @@
 package level.base;
 
-
 import java.util.ArrayList;
 
 import level.levels.FirstLevel;
+import level.levels.TestLevel;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -13,12 +13,12 @@ public class LevelDivisor {
 	ArrayList<ILevel> levels = new ArrayList<ILevel>();
 	
 	//LEVELS!
-	//TestLevel test = new TestLevel();
+	TestLevel test = new TestLevel();
 	FirstLevel first = new FirstLevel();
 	
 	public LevelDivisor() {
 		//ADD LEVELS TO LIST!
-		//levels.add(test);
+		levels.add(test);
 		levels.add(first);
 	}
 

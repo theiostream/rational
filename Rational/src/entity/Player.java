@@ -124,6 +124,7 @@ public class Player extends Entity implements IEntity {
 	
 	@Override
 	public void update(int delta){
+		super.update(delta);
 		setX(getX() + getMotionX());
 		if(yMove){
 			setY(getY() + getMotionY());
@@ -140,6 +141,15 @@ public class Player extends Entity implements IEntity {
 			super.moveRight();
 			break;
 		}
+		
+		if(!yMove){
+			switch(key){
+			case Keyboard.KEY_SPACE:
+				jump();
+				break;
+			}
+		}
+		
 		if(yMove){
 			switch(key){
 			case Keyboard.KEY_UP:
@@ -173,5 +183,9 @@ public class Player extends Entity implements IEntity {
 	@Override
 	public ObjectType getType() {
 		return ObjectType.PLAYER;
+	}
+	
+	public void jump(){
+		setMotionY(2.5f);
 	}
 }
