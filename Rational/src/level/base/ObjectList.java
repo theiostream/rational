@@ -1,16 +1,11 @@
 package level.base;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
+
+import util.ImageLoader;
 
 import component.BackgroundObject;
 import component.Drawable;
@@ -23,7 +18,8 @@ import entity.Player;
 import game.Rational;
 
 public class ObjectList {
-
+	
+	static ImageLoader imgLoad = new ImageLoader();
 	private boolean check1 = false, check2 = false, check3 = false, check4 = false, check5 = false, check6 = false;
 	
 	ArrayList<Drawable> objects = new ArrayList<Drawable>();
@@ -181,19 +177,19 @@ public class ObjectList {
 	}
 	
 	public void addBgObj(float x, float y, float width, float height, String texture){
-		objects.add(new BackgroundObject(x, y, width, height, Color.white, new Image(loadTexture(texture))));
+		objects.add(new BackgroundObject(x, y, width, height, Color.white, imgLoad.loadImage(texture, "png")));
 	}
 	
 	public void addBgObj(Point point, Size size, String texture){
-		objects.add(new BackgroundObject(point, size, Color.white, new Image(loadTexture(texture))));
+		objects.add(new BackgroundObject(point, size, Color.white, imgLoad.loadImage(texture, "png")));
 	}
 	
 	public void addBgObj(float x, float y, float width, float height, Color color, String texture){
-		objects.add(new BackgroundObject(x, y, width, height, color, new Image(loadTexture(texture))));
+		objects.add(new BackgroundObject(x, y, width, height, color, imgLoad.loadImage(texture, "png")));
 	}
 	
 	public void addBgObj(Point point, Size size, Color color, String texture){
-		objects.add(new BackgroundObject(point, size, color, new Image(loadTexture(texture))));
+		objects.add(new BackgroundObject(point, size, color, imgLoad.loadImage(texture, "png")));
 	}
 	
 	public void addFgObj(float x, float y, float width, float height, boolean fill){
@@ -213,19 +209,19 @@ public class ObjectList {
 	}
 	
 	public void addFgObj(float x, float y, float width, float height, String texture){
-		objects.add(new ForegroundObject(x, y, width, height, Color.white, new Image(loadTexture(texture))));
+		objects.add(new ForegroundObject(x, y, width, height, Color.white, imgLoad.loadImage(texture, "png")));
 	}
 	
 	public void addFgObj(Point point, Size size, String texture){
-		objects.add(new ForegroundObject(point, size, Color.white, new Image(loadTexture(texture))));
+		objects.add(new ForegroundObject(point, size, Color.white, imgLoad.loadImage(texture, "png")));
 	}
 	
 	public void addFgObj(float x, float y, float width, float height, Color color, String texture){
-		objects.add(new ForegroundObject(x, y, width, height, color, new Image(loadTexture(texture))));
+		objects.add(new ForegroundObject(x, y, width, height, color, imgLoad.loadImage(texture, "png")));
 	}
 	
 	public void addFgObj(Point point, Size size, Color color, String texture){
-		objects.add(new ForegroundObject(point, size, color, new Image(loadTexture(texture))));
+		objects.add(new ForegroundObject(point, size, color, imgLoad.loadImage(texture, "png")));
 	}
 	
 	/*public void addTextBox(float x, float y, float width, float height, String text){
@@ -272,14 +268,4 @@ public class ObjectList {
 		objects.add(drawable);
 	}
 	
-	private Texture loadTexture(String key){
-		try {
-			return TextureLoader.getTexture("PNG", new FileInputStream(new File("res/" + key + ".png")));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 }

@@ -90,11 +90,6 @@ public abstract class Enemy extends Entity implements IEnemy{
 	public Enemy(Point point, Size size, float red, float green, float blue, Image image, float speed, float health, float baseDmg) {
 		super(point, size, red, green, blue, image, speed, health, baseDmg);
 	}
-
-	@Override
-	public void update(int delta) {
-		
-	}
 	
 	@Override
 	public ObjectType getType() {
