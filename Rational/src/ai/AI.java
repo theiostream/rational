@@ -9,40 +9,20 @@ import entity.Player;
 public class AI {
 	
 	private ArrayList<AIComponent> component;
-	private AIState state;
-	private AIState nextState;
 	private Entity entity;
 	
-	public AI(ArrayList<AIComponent> list, AIState startingState, Entity entity) {
-		this.component = list;
-		this.state = startingState;
-		this.nextState = startingState;
+	public AI(Entity entity) {
 		this.entity = entity;
 	}
 	
 	public void update(int delta, Player player){
-		
 		for(int i = 0; i < component.size(); i++){
 			component.get(i).run(delta, player, entity, this);
 		}
-		
-		state = nextState;
-	}
-	
-	public AIState getNextState(){
-		return nextState;
-	}
-	
-	public AIState getCurrentState(){
-		return state;
 	}
 	
 	public ArrayList<AIComponent> getComponentList(){
 		return component;
-	}
-	
-	public void setNextState(AIState nextState){
-		this.nextState = nextState;
 	}
 	
 	public void setComponentList(ArrayList<AIComponent> list){

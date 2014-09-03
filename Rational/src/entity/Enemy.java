@@ -3,12 +3,16 @@ package entity;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
+import ai.AI;
+
 import component.Entity;
 import component.ObjectType;
 import component.coords.Point;
 import component.coords.Size;
 
 public abstract class Enemy extends Entity implements IEnemy{
+	
+	private AI ai = new AI(this);
 
 	public Enemy(float x, float y, float width, float height, float health, float baseDmg) {
 		super(x, y, width, height, health, baseDmg);
@@ -89,6 +93,11 @@ public abstract class Enemy extends Entity implements IEnemy{
 
 	public Enemy(Point point, Size size, float red, float green, float blue, Image image, float speed, float health, float baseDmg) {
 		super(point, size, red, green, blue, image, speed, health, baseDmg);
+	}
+	
+	public void update(int delta, Player player){
+		super.update(delta);
+		ai.update(delta, player);
 	}
 	
 	@Override

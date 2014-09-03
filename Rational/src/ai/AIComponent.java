@@ -2,21 +2,15 @@ package ai;
 
 public abstract class AIComponent implements IAIComponent{
 	
-	private AIComponentType cType;
-	private String mode;
+	private short mode;
 	private int fitness;
 	
-	public AIComponent(AIComponentType cType, String mode) {
-		this.cType = cType;
+	public AIComponent(short mode) {
 		this.mode = mode;
 		this.fitness = 100;
 	}
 	
-	public AIComponentType getType(){
-		return cType;
-	}
-	
-	public String getMode(){
+	public short getMode(){
 		return mode;
 	}
 	

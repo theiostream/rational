@@ -1,5 +1,5 @@
 package ai;
 
-public enum AIState {
+public enum AIComponentState {
 	IDLE, REGULAR, CURIOUS, ANGRY, DESPERATE
 }
