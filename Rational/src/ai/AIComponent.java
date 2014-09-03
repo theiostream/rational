@@ -14,8 +14,16 @@ public abstract class AIComponent implements IAIComponent{
 		return mode;
 	}
 	
+	public void setMode(short mode){
+		this.mode = mode;
+	}
+	
 	public void incrFitness(int incr){
 		this.fitness =- incr;
+	}
+	
+	public void decrFitness(int decr){
+		this.fitness =+ decr;
 	}
 	
 	public int getFitness(){

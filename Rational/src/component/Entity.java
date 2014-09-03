@@ -12,10 +12,11 @@ import entity.Gravity;
 public abstract class Entity extends Drawable implements IEntity {
 
 	private Gravity gravity = new Gravity();
-	private float health, baseDmg, dmg, dmgIncr;
+	private float maxHealth, health, baseDmg, dmg, dmgIncr;
 	
 	public Entity(float x, float y, float width, float height, float health, float baseDmg){
 		super(new Point(x, y), new Size(width, height), 0f, 0f, 1f, Color.white, true);
+		this.maxHealth = health;
 		this.health = health;
 		this.baseDmg = baseDmg;
 	}
@@ -181,6 +182,11 @@ public abstract class Entity extends Drawable implements IEntity {
 	}
 	
 	@Override
+	public float getMaxHealth(){
+		return this.maxHealth;
+	}
+	
+	@Override
 	public float getBaseDamage(){
 		return this.baseDmg;
 	}
@@ -193,6 +199,11 @@ public abstract class Entity extends Drawable implements IEntity {
 	@Override
 	public float getDamage(){
 		return this.baseDmg + this.dmgIncr;
+	}
+	
+	@Override
+	public void setMaxHealth(float maxHealth){
+		this.maxHealth = maxHealth;
 	}
 	
 	@Override

@@ -14,6 +14,14 @@ public class AIAttack extends AIComponent {
 
 	@Override
 	public void run(int delta, Player player, Entity entity, AI ai) {
+		switch(getMode()){
+		case 0:
+			
+			break;
+		case 1:
+			
+			break;
+		}
 	}
 
 }
