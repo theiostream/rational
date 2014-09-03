@@ -18,6 +18,7 @@ public abstract class Drawable implements IDrawable {
 	private Image image;
 	private boolean fill;
 	private ObjectType type;
+	private boolean isJumping = false;
 	
 	public Drawable(float x, float y, float width, float height, float motionX, float motionY, float speed, Color color, Image image) {
 		this.rect = new Rect(new Point(x, y), new Size(width, height));
@@ -73,6 +74,11 @@ public abstract class Drawable implements IDrawable {
 	private void update_(int delta){
 		setX(getX() + (motionX * speed));
 		setY(getY() + (motionY * speed));
+		
+		if (this.isJumping) {
+			this.isJumping = false;
+			motionY = -2;
+		}
 	}
 	
 	@Override
@@ -89,16 +95,18 @@ public abstract class Drawable implements IDrawable {
 			update_(delta);
 		}
 		
-		if (check4) {
-			moveUp();
-			player.stopY();
-		}
-		else if (check5) {
-			moveDown();
-			player.stopY();
-		}
-		else if (check6) {
-			update_(delta);
+		if (!isJumping) {
+			if (check4) {
+				moveUp();
+				player.stopY();
+			}
+			else if (check5) {
+				moveDown();
+				player.stopY();
+			}
+			else if (check6) {
+				update_(delta);
+			}
 		}
 		
 		if (this.getType() == ObjectType.FOREGROUND) {
@@ -399,6 +407,18 @@ public abstract class Drawable implements IDrawable {
 	@Override
 	public void stopY() {
 		this.motionY = 0;
+	}
+	
+	public void startRunning() {
+		this.speed = 2;
+	}
+	public void stopRunning() {
+		this.speed = 0;
+	}
+	
+	public void jump() {
+		this.motionY = 3;
+		this.isJumping = true;
 	}
 	
 	@Override
