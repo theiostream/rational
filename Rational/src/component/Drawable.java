@@ -212,6 +212,42 @@ public abstract class Drawable implements IDrawable {
 			return false;
 		}
 	}
+	
+	@Override
+	public boolean withinRangeUp(Drawable drawable, float range){
+		if(drawable.getY() + drawable.getHeight() + range >= getY()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean withinRangeDown(Drawable drawable, float range){
+		if(getY() + getHeight() +  range >= drawable.getY()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean withinRangeLeft(Drawable drawable, float range){
+		if(drawable.getX() + drawable.getWidth() + range >= getX()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean withinRangeRight(Drawable drawable, float range){
+		if(getX() + getWidth() +  range >= drawable.getX()){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 	@Override
 	public float getX() {

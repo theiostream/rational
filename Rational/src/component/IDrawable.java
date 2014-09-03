@@ -20,6 +20,10 @@ public interface IDrawable {
 	public boolean intersectsDown(Drawable drawable);
 	public boolean intersectsLeft(Drawable drawable);
 	public boolean intersectsRight(Drawable drawable);
+	public boolean withinRangeUp(Drawable drawable, float range);
+	public boolean withinRangeDown(Drawable drawable, float range);
+	public boolean withinRangeLeft(Drawable drawable, float range);
+	public boolean withinRangeRight(Drawable drawable, float range);
 	public float getX();
 	public float getY();
 	public Point getPoint();

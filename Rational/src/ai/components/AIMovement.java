@@ -2,24 +2,32 @@ package ai.components;
 
 import ai.AI;
 import ai.AIComponent;
-
+import ai.AIComponentState;
 import component.Entity;
-
 import entity.Player;
 
 public class AIMovement extends AIComponent {
 	
+	private AIComponentState state;
 	private float healthPercentageLimit = 0.25f;
 
 	public AIMovement(short mode) {
 		super(mode);
+		this.state = AIComponentState.REGULAR;
 	}
 
 	@Override
 	public void run(int delta, Player player, Entity entity, AI ai) {
+		
+		if(entity.getHealth() != entity.getMaxHealth() * healthPercentageLimit){
+			this.state = AIComponentState.CURIOUS;
+		}else if(entity.getHealth() <= entity.getMaxHealth() * healthPercentageLimit){
+			this.state = AIComponentState.DESPERATE;
+		}
+		
 		switch(getMode()){
 		case 0:
-			if(entity.getHealth() != entity.getMaxHealth() * healthPercentageLimit){
+			if(this.state == AIComponentState.CURIOUS || this.state == AIComponentState.REGULAR){
 				if(player.getX() > entity.getX()){
 					entity.moveRight();
 					if(getFitness() != 0)
@@ -41,7 +49,7 @@ public class AIMovement extends AIComponent {
 						decrFitness(1);
 					}
 				}
-			}else{
+			}else if(this.state == AIComponentState.CURIOUS){
 				if(player.getX() > entity.getX()){
 					entity.moveLeft();
 					if(getFitness() != 0)
