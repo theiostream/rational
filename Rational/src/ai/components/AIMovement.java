@@ -9,25 +9,26 @@ import entity.Player;
 public class AIMovement extends AIComponent {
 	
 	private AIComponentState state;
-	private float healthPercentageLimit = 0.25f;
+	private float healthPercentageLimit;
 
 	public AIMovement(short mode) {
 		super(mode);
-		this.state = AIComponentState.REGULAR;
+		setState(AIComponentState.REGULAR);
+		setHealthPercentageLimit(0.25f);
 	}
 
 	@Override
 	public void run(int delta, Player player, Entity entity, AI ai) {
 		
 		if(entity.getHealth() != entity.getMaxHealth() * healthPercentageLimit){
-			this.state = AIComponentState.CURIOUS;
+			setState(AIComponentState.CURIOUS);
 		}else if(entity.getHealth() <= entity.getMaxHealth() * healthPercentageLimit){
-			this.state = AIComponentState.DESPERATE;
+			setState(AIComponentState.DESPERATE);
 		}
 		
 		switch(getMode()){
 		case 0:
-			if(this.state == AIComponentState.CURIOUS || this.state == AIComponentState.REGULAR){
+			if(getState() == AIComponentState.CURIOUS || getState() == AIComponentState.REGULAR){
 				if(player.getX() > entity.getX()){
 					entity.moveRight();
 					if(getFitness() != 0)
@@ -49,7 +50,7 @@ public class AIMovement extends AIComponent {
 						decrFitness(1);
 					}
 				}
-			}else if(this.state == AIComponentState.CURIOUS){
+			}else if(getState() == AIComponentState.CURIOUS){
 				if(player.getX() > entity.getX()){
 					entity.moveLeft();
 					if(getFitness() != 0)
@@ -77,6 +78,14 @@ public class AIMovement extends AIComponent {
 			
 			break;
 		}
+	}
+	
+	public AIComponentState getState(){
+		return this.state;
+	}
+	
+	public void setState(AIComponentState state){
+		this.state = state;
 	}
 	
 	public float getHealthPercentageLimit(){
