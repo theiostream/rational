@@ -50,7 +50,7 @@ public class AIMovement extends AIComponent {
 						decrFitness(1);
 					}
 				}
-			}else if(getState() == AIComponentState.CURIOUS){
+			}else if(getState() == AIComponentState.DESPERATE){
 				if(player.getX() > entity.getX()){
 					entity.moveLeft();
 					if(getFitness() != 0)

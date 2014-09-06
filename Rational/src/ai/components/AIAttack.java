@@ -22,8 +22,8 @@ public class AIAttack extends AIComponent {
 
 	@Override
 	public void run(int delta, Player player, Entity entity, AI ai) {
-		if(entity.withinRangeDown(player, this.range) || entity.withinRangeUp(player, this.range) || entity.withinRangeLeft(player, this.range)
-				|| entity.withinRangeRight(player, this.range)){
+		if(getState() == AIComponentState.REGULAR && (entity.withinRangeDown(player, this.range) || entity.withinRangeUp(player, this.range)
+				|| entity.withinRangeLeft(player, this.range) || entity.withinRangeRight(player, this.range))){
 			setState(AIComponentState.ANGRY);
 		}
 		
@@ -37,8 +37,9 @@ public class AIAttack extends AIComponent {
 		
 		switch(getMode()){
 		case 0:
-			if(getState() == AIComponentState.REGULAR){
-				
+			if(getState() == AIComponentState.ANGRY){
+				entity.attack(player);
+				setState(AIComponentState.IDLE);
 			}
 			break;
 		case 1:
