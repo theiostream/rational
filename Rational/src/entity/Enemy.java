@@ -1,9 +1,12 @@
 package entity;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
 import ai.AI;
+import ai.AIComponent;
 
 import component.Entity;
 import component.ObjectType;
@@ -103,6 +106,14 @@ public abstract class Enemy extends Entity implements IEnemy{
 	@Override
 	public ObjectType getType() {
 		return ObjectType.ENEMY;
+	}
+	
+	public ArrayList<AIComponent> getAIComponentList(){
+		return this.ai.getComponentList();
+	}
+	
+	public void setAIComponentList(ArrayList<AIComponent> list){
+		this.ai.setComponentList(list);
 	}
 
 }
