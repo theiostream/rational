@@ -29,6 +29,7 @@ public class TestEnemy extends Enemy{
 		list.add(new AIMovement(MovementModes));
 		AttackModes.add(new Mode((short) 0, "Main"));
 		AttackModes.add(new Mode((short) 0, "AngryTrigger"));
+		AttackModes.add(new Mode((short) 0, "CooldownIdleRegular"));
 		list.add(new AIAttack(AttackModes));
 		DefenceModes.add(new Mode((short) 0, "Main"));
 		list.add(new AIDefence(DefenceModes));

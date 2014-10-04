@@ -1,6 +1,6 @@
 package ai.components;
 /*
- * Used mode settings: Main, AngryTrigger
+ * Required modes settings: Main, AngryTrigger, CooldownIdleRegular
  */
 import java.util.ArrayList;
 
@@ -41,12 +41,19 @@ public class AIAttack extends AIComponent {
 			break;
 		}
 		
-		if(getState() == AIComponentState.IDLE){
-			incrTimer();
-			if(getTimer() == getCooldown()){
-				setState(AIComponentState.REGULAR);
-				resetTimer();
+		switch(getMode("CooldownIdleRegular")){
+		case 0:
+			if(getState() == AIComponentState.IDLE){
+				incrTimer();
+				if(getTimer() == getCooldown()){
+					setState(AIComponentState.REGULAR);
+					resetTimer();
+				}
 			}
+			break;
+		case 1:
+			
+			break;
 		}
 		
 		switch(getMode("Main")){

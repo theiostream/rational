@@ -1,5 +1,7 @@
 package ai.components;
-
+/*
+ * Required modes settings: Main, HealthBasedState
+ */
 import java.util.ArrayList;
 
 import ai.AI;
@@ -23,10 +25,17 @@ public class AIMovement extends AIComponent {
 	@Override
 	public void run(int delta, Player player, Entity entity, AI ai) {
 		
-		if(entity.getHealth() != entity.getMaxHealth() * healthPercentageLimit){
-			setState(AIComponentState.CURIOUS);
-		}else if(entity.getHealth() <= entity.getMaxHealth() * healthPercentageLimit){
-			setState(AIComponentState.DESPERATE);
+		switch(getMode("HealthBasedState")){
+		case 0:
+			if(entity.getHealth() != entity.getMaxHealth() * healthPercentageLimit){
+				setState(AIComponentState.CURIOUS);
+			}else if(entity.getHealth() <= entity.getMaxHealth() * healthPercentageLimit){
+				setState(AIComponentState.DESPERATE);
+			}
+			break;
+		case 1:
+			
+			break;
 		}
 		
 		switch(getMode("Main")){
