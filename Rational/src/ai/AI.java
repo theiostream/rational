@@ -3,7 +3,6 @@ package ai;
 import java.util.ArrayList;
 
 import component.Entity;
-
 import entity.Player;
 
 public class AI {
@@ -35,6 +34,17 @@ public class AI {
 				component.set(i, list.get(i));
 			}
 		}
+	}
+	
+	public AIComponentState getState(AIComponent component){
+		int componentNumber = 0;
+		for(int i = 0; i < this.component.size(); i++){
+			if(this.component.get(i).equals(component)){
+				componentNumber = i;
+				break;
+			}
+		}
+		return this.component.get(componentNumber).getState();
 	}
 
 }

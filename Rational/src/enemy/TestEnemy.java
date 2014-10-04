@@ -6,12 +6,15 @@ import org.newdawn.slick.Image;
 
 import util.ImageLoader;
 import ai.AIComponent;
+import ai.Mode;
 import ai.components.AIAttack;
 import ai.components.AIDefence;
 import ai.components.AIMovement;
 import entity.Enemy;
 
 public class TestEnemy extends Enemy{
+	
+	private ArrayList<Mode> MovementModes, AttackModes, DefenceModes;
 	
 	static ImageLoader imgLoad = new ImageLoader();
 	static Image test = imgLoad.loadScaledImage("test", "jpg", 0.1f);
@@ -22,9 +25,13 @@ public class TestEnemy extends Enemy{
 	}
 	
 	private void editAIComponentList(ArrayList<AIComponent> list){
-		list.add(new AIMovement((short) 0));
-		list.add(new AIAttack((short) 0));
-		list.add(new AIDefence((short) 0));
+		MovementModes.add(new Mode((short) 0, "Main"));
+		list.add(new AIMovement(MovementModes));
+		AttackModes.add(new Mode((short) 0, "Main"));
+		AttackModes.add(new Mode((short) 0, "AngryTrigger"));
+		list.add(new AIAttack(AttackModes));
+		DefenceModes.add(new Mode((short) 0, "Main"));
+		list.add(new AIDefence(DefenceModes));
 		setAIComponentList(list);
 	}
 

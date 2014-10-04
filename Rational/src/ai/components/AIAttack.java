@@ -1,18 +1,24 @@
 package ai.components;
+/*
+ * Used mode settings: Main, AngryTrigger
+ */
+import java.util.ArrayList;
 
-import component.Entity;
-import entity.Player;
 import ai.AI;
 import ai.AIComponent;
 import ai.AIComponentState;
+import ai.Mode;
+
+import component.Entity;
+
+import entity.Player;
 
 public class AIAttack extends AIComponent {
-
-	private AIComponentState state;
+	
 	private float range;
 	private double cooldown, timer;
 	
-	public AIAttack(short mode) {
+	public AIAttack(ArrayList<Mode> mode) {
 		super(mode);
 		setState(AIComponentState.REGULAR);
 		setRange(5);
@@ -22,9 +28,17 @@ public class AIAttack extends AIComponent {
 
 	@Override
 	public void run(int delta, Player player, Entity entity, AI ai) {
-		if(getState() == AIComponentState.REGULAR && (entity.withinRangeDown(player, this.range) || entity.withinRangeUp(player, this.range)
+		
+		switch(getMode("AngryTrigger")){
+		case 0:
+			if(getState() == AIComponentState.REGULAR && (entity.withinRangeDown(player, this.range) || entity.withinRangeUp(player, this.range)
 				|| entity.withinRangeLeft(player, this.range) || entity.withinRangeRight(player, this.range))){
-			setState(AIComponentState.ANGRY);
+				setState(AIComponentState.ANGRY);
+			}	
+			break;
+		case 1:		
+			
+			break;
 		}
 		
 		if(getState() == AIComponentState.IDLE){
@@ -35,7 +49,7 @@ public class AIAttack extends AIComponent {
 			}
 		}
 		
-		switch(getMode()){
+		switch(getMode("Main")){
 		case 0:
 			if(getState() == AIComponentState.ANGRY){
 				entity.attack(player);
@@ -46,14 +60,6 @@ public class AIAttack extends AIComponent {
 			
 			break;
 		}
-	}
-	
-	public AIComponentState getState(){
-		return this.state;
-	}
-	
-	public void setState(AIComponentState state){
-		this.state = state;
 	}
 	
 	public void setRange(float range){

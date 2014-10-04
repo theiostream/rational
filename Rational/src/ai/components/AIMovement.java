@@ -1,8 +1,11 @@
 package ai.components;
 
+import java.util.ArrayList;
+
 import ai.AI;
 import ai.AIComponent;
 import ai.AIComponentState;
+import ai.Mode;
 import component.Entity;
 import entity.Player;
 
@@ -11,7 +14,7 @@ public class AIMovement extends AIComponent {
 	private AIComponentState state;
 	private float healthPercentageLimit;
 
-	public AIMovement(short mode) {
+	public AIMovement(ArrayList<Mode> mode) {
 		super(mode);
 		setState(AIComponentState.REGULAR);
 		setHealthPercentageLimit(0.25f);
@@ -26,7 +29,7 @@ public class AIMovement extends AIComponent {
 			setState(AIComponentState.DESPERATE);
 		}
 		
-		switch(getMode()){
+		switch(getMode("Main")){
 		case 0:
 			if(getState() == AIComponentState.CURIOUS || getState() == AIComponentState.REGULAR){
 				if(player.getX() > entity.getX()){
