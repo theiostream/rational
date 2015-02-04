@@ -11,7 +11,7 @@ import org.newdawn.slick.util.ResourceLoader;
 public class Fonts {
 	public static TrueTypeFont gameFont() throws FontFormatException, IOException {
 		
-		InputStream inputStream = ResourceLoader.getResourceAsStream("font/res/8bit.ttf");
+		InputStream inputStream = ResourceLoader.getResourceAsStream("Rational/res/font/8bit.ttf");
 		Font awtFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
 		awtFont = awtFont.deriveFont(20f);
 		
