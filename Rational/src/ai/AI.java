@@ -1,16 +1,16 @@
 package ai;
 
-import java.util.ArrayList;
-
 import component.Entity;
 import entity.Player;
 
+import java.util.ArrayList;
+
 public class AI {
-	
-	private ArrayList<AIComponent> component;
-	private Entity entity;
-	
-	public AI(Entity entity) {
+
+    private ArrayList<AIComponent> component = new ArrayList<AIComponent>();
+    private Entity entity;
+
+    public AI(Entity entity) {
 		this.entity = entity;
 	}
 	

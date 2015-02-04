@@ -1,20 +1,19 @@
 package enemy;
 
-import java.util.ArrayList;
-
-import org.newdawn.slick.Image;
-
-import util.ImageLoader;
 import ai.AIComponent;
 import ai.Mode;
 import ai.components.AIAttack;
 import ai.components.AIDefence;
 import ai.components.AIMovement;
 import entity.Enemy;
+import org.newdawn.slick.Image;
+import util.ImageLoader;
+
+import java.util.ArrayList;
 
 public class TestEnemy extends Enemy{
 
-    private ArrayList<Mode> MovementModes, AttackModes, DefenceModes;
+    private ArrayList<Mode> MovementModes = new ArrayList<Mode>(), AttackModes = new ArrayList<Mode>(), DefenceModes = new ArrayList<Mode>();
 
     static ImageLoader imgLoad = new ImageLoader();
     static Image test = imgLoad.loadScaledImage("enemy/test", "jpg", 0.1f);
