@@ -1,5 +1,7 @@
 package game;
-
+/*
+FUCKING TODO CONSTRUCTION KIT (05/02) [Ping]
+ */
 import level.base.ILevel;
 import level.base.LevelDivisor;
 

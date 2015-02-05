@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
+import org.newdawn.slick.Image;
 import util.ImageLoader;
 
 import component.BackgroundObject;
@@ -184,13 +185,21 @@ public class ObjectList {
 		objects.add(new BackgroundObject(point, size, Color.white, imgLoad.loadImage(texture, "png")));
 	}
 	
-	public void addBgObj(float x, float y, float width, float height, Color color, String texture){
-		objects.add(new BackgroundObject(x, y, width, height, color, imgLoad.loadImage(texture, "png")));
+	public void addBgObj(float x, float y, float width, float height, Color color, Image image){
+		objects.add(new BackgroundObject(x, y, width, height, color, image));
 	}
 	
-	public void addBgObj(Point point, Size size, Color color, String texture){
-		objects.add(new BackgroundObject(point, size, color, imgLoad.loadImage(texture, "png")));
+	public void addBgObj(Point point, Size size, Color color, Image image){
+		objects.add(new BackgroundObject(point, size, color, image));
 	}
+
+    public void addBgObj(float x, float y, float width, float height, Color color, String texture){
+        objects.add(new BackgroundObject(x, y, width, height, color, imgLoad.loadImage(texture, "png")));
+    }
+
+    public void addBgObj(Point point, Size size, Color color, String texture){
+        objects.add(new BackgroundObject(point, size, color, imgLoad.loadImage(texture, "png")));
+    }
 	
 	public void addFgObj(float x, float y, float width, float height, boolean fill){
 		objects.add(new ForegroundObject(x, y, width, height, fill));

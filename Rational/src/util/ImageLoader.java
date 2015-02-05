@@ -15,7 +15,7 @@ public class ImageLoader {
 
 	public Texture loadTexture(String key, String format){
 		try {
-			return TextureLoader.getTexture(format.toUpperCase(), new FileInputStream(new File("res/" + key + "." + format)));
+			return TextureLoader.getTexture(format.toUpperCase(), new FileInputStream(new File("Rational/res/" + key + "." + format)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -26,7 +26,7 @@ public class ImageLoader {
 
     public Image loadImage(String key, String format){
 		try {
-			return new Image(TextureLoader.getTexture(format.toUpperCase(), new FileInputStream(new File("res/" + key + "." + format))));
+			return new Image(TextureLoader.getTexture(format.toUpperCase(), new FileInputStream(new File("Rational/res/" + key + "." + format))));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
