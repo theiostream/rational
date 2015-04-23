@@ -1,5 +1,5 @@
 package component;
-
+//TODO USEFULL AS FUCK, PLZ IMPLEMENT
 public enum ObjectType {
 	BACKGROUND, FOREGROUND, PLAYER, ENTITY, BUTTON, TEXTBOX, ENEMY
 }

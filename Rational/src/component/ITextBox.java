@@ -7,7 +7,6 @@ import component.coords.Rect;
 
 public interface ITextBox {
 	public void draw(Graphics g);
-	public void update(int delta);
 	public void setRect(Rect rect);
 	public void setText(String text);
 	public void setColor(Color color);

@@ -1,5 +1,5 @@
 package level.base;
-
+//TODO START USING MULTIPLE RENDERING TYPES USING OBJECT TYPES (maybe pass information in different ways according to each type)
 import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
@@ -232,43 +232,43 @@ public class ObjectList {
 	public void addFgObj(Point point, Size size, Color color, String texture){
 		objects.add(new ForegroundObject(point, size, color, imgLoad.loadImage(texture, "png")));
 	}
-	
+
 	/*public void addTextBox(float x, float y, float width, float height, String text){
 		objects.add(new TextBox(x, y, width, height, text));
 	}
-	
+
 	public void addTextBox(Point point, Size size, String text){
 		objects.add(new TextBox(point, size, text));
 	}
-	
+
 	public void addTextBox(float x, float y, float width, float height, Color color, String text){
 		objects.add(new TextBox(x, y, width, height, text, color));
 	}
-	
+
 	public void addTextBox(Point point, Size size, Color color, String text){
 		objects.add(new TextBox(point, size, color, text));
 	}
-	
+
 	public void addTextBox(float x, float y, float width, float height, String texture, String text){
 		objects.add(new TextBox(x, y, width, height, new Image(loadTexture(texture)), text));
 	}
-	
+
 	public void addTextBox(Point point, Size size, Color color, String texture, String text){
 		objects.add(new TextBox(point, size, new Image(loadTexture(texture)), text));
 	}*/
-	
+
 	/*public void addButton(float x, float y, float width, float height, Color color, String function, String text){
 		objects.add(new Button(x, y, width, height, color, function, text));
 	}
-	
+
 	public void addButton(Point point, Size size, Color color, String texture, String function, String text){
 		objects.add(new Button(point, size, new Image(loadTexture(texture)), function, text));
 	}
-	
+
 	public void addButton(Point point, Size size, String texture, String function, String text){
 		objects.add(new Button(point, size, new Image(loadTexture(texture)), function, text));
 	}
-	
+
 	public void addButton(float x, float y, float width, float height, Color color, String function, String text){
 		objects.add(new Button(x, y, width, height, color, function, text));
 	}*/

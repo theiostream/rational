@@ -1,5 +1,5 @@
 package entity;
-
+//TODO delete useless casts in all abstracted objects (ENEMY, BgObj, FgObj)
 import java.util.ArrayList;
 
 import org.newdawn.slick.Color;

@@ -1,5 +1,5 @@
 package component;
-
+//NEEDS FIX: NOT MOVING PROPERLY (is always on screen + left limit seams to be broken
 import game.Rational;
 
 import org.newdawn.slick.Color;
@@ -8,7 +8,7 @@ import org.newdawn.slick.TrueTypeFont;
 
 import component.coords.Rect;
 
-public class TextBox extends Drawable implements ITextBox {
+public class TextBox extends Drawable implements IDrawable, ITextBox {
 	
 	private String text;
 	
@@ -27,11 +27,6 @@ public class TextBox extends Drawable implements ITextBox {
 		float textX = getX() + ((getWidth()/2 - f.getWidth(text)/2));
 		float textY = getY() + Y_OFFSET;
 		f.drawString(textX, textY, text);
-	}
-
-	@Override
-	public void update(int delta) {
-
 	}
 	
 	@Override
